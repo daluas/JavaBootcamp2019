@@ -3,3 +3,16 @@
 2-)The Ceasar cipher is a basic encryption technique used by Julius Ceasar to securely communicate with his generals. Each letter is replaced by another letter N positions down the english alphabet. For example, for a rotation of 5, the letter 'c' would be replaced by an 'h'. In case of a 'z', the alphabet rotates and it is transformed into a 'd'.
 Implement a decoder for the Ceasar cipher where N = 5.
 TIP: Use code.toCharArray() to get an array of characters.
+
+3-)For these exercises, start with a List of Strings similar to this:
+• List<String> words = Arrays.asList("hi", "hello", ...);
+1. Produce a single String that is the result of concatenating the uppercase versions of all of the
+Strings. E.g., the result should be "HIHELLO...". Use a single reduce operation, without using map.
+2. Produce the same String as above, but this time via a map operation that turns the words into upper
+case, followed by a reduce operation that concatenates them.
+3. Produce a String that is all the words concatenated together, but with commas in between. E.g., the
+result should be "hi,hello,...". Note that there is no comma at the beginning, before “hi”, and also no
+comma at the end, after the last word. Major hint: there are two versions of reduce discussed in the
+notes.
+4. Find the total number of characters (i.e., sum of the lengths) of the strings in the List.
+5. Find the number of words that contain an “h”
