@@ -28,6 +28,7 @@ public class vcx
         showElement(sumOfList);
         long timeAfter = System.currentTimeMillis();
         long elapsed = timeAfter - timeBefore;
+
         System.out.println(elapsed);
 
 
