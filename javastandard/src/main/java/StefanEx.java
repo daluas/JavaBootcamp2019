@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 class StudentComparator implements Comparator<Student> {
     @Override
@@ -123,5 +124,21 @@ public class StefanEx {
         System.out.println(students);
         //TODO Create a method that displays the the lastName of the students that have no grade lower than 5.
         displayStudentsWithGradesAboveFive(students);
+
+        // Sort the students by age
+        students = students.stream().sorted(Comparator.comparingInt(Student::getAge)).collect(Collectors.toList());
+        // Display only the students that are above 20 years
+        System.out.println("\nStudents above 20 years: ");
+        students.stream().filter(x -> x.getAge() > 20).forEach(System.out::println);
+        // Display only the students that have their lastname ending in escu
+        System.out.println("\nStudents ending in 'escu': ");
+        students.stream().filter(x -> x.getLastName().endsWith("escu")).forEach(System.out::println);
+        // Create a new Class named Grades with the following members: score and disciplineName. Each Student can have one or more grades at a certain discipline
+        // Add grades to the students
+        addDefaultStudentGrades(students);
+        // Create a method that displays the the lastName of the students that have no grade lower than 5.
+        System.out.println("\nStudents with grades above 20: ");
+        students.stream().filter(x -> x.getGrades().stream().allMatch(a -> a.getScore() >= 5)).
+                forEach(a -> System.out.println(a.getLastName()));
     }
 }
