@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Student {
 
     private int age;
@@ -5,6 +7,17 @@ public class Student {
     private String firstName;
 
     private String lastName;
+
+    private List<Grades> grades;
+
+    public void setGrades(List<Grades> grades) {
+        this.grades = grades;
+    }
+
+    public List<Grades> getGrades() {
+
+        return grades;
+    }
 
     public Student(int age, String firstName, String lastName) {
         this.age = age;
@@ -42,6 +55,6 @@ public class Student {
                 "age=" + age +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                '}';
+                "Grades: " + grades +'}';
     }
 }
