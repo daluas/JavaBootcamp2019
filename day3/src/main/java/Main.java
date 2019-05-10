@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -65,10 +63,45 @@ public class Main {
         System.out.println("5. Number of words that contain 'h': " + resultNumber);
     }
 
+    //Every class in highschool has a designated president. Because of that, we'll store all the classes as a Map<Student,List<Student>>
+    //where the key is the president student and value List<Student> represents all the students in his class.
+    //Using this structure, aggregate all the students into a single list using both approaches,
+    //declarative and with streams and print all the students name on the console.
+
+    private static Map<Student, List<Student>> generateDefaultPresidentMap() {
+        Map<Student, List<Student>> presidentStudents = new HashMap<>();
+        Student student1 = new Student(22, "Ionel", "Popescu");
+        Student student2 = new Student(18, "Mihai", "Ionescu");
+        Student student3 = new Student(21, "Ghita", "Muresan");
+        Student student4 = new Student(17, "Dorel", "Constructor");
+        Student student5 = new Student(15, "Marius", "Parasca");
+        Student student6 = new Student(23, "Ciprian", "Cozma");
+        List<Student> students = Arrays.asList(student1, student2, student3);
+        presidentStudents.put(student1, students);
+        students = Arrays.asList(student4, student5, student6);
+        presidentStudents.put(student4, students);
+        return presidentStudents;
+    }
+
+    private static void ex4(Map<Student, List<Student>> presidentStudents) {
+        List<Student> declarativeApproach = new ArrayList<>();
+        List streamsApproach;
+        for(Map.Entry<Student, List<Student>> entry : presidentStudents.entrySet()) {
+            declarativeApproach.addAll(entry.getValue());
+        }
+
+        System.out.println("Declarative approach: " + declarativeApproach);
+
+        streamsApproach = presidentStudents.values().stream().flatMap(Collection::stream).collect(Collectors.toList());
+        System.out.println("Stream approach: " + streamsApproach);
+
+    }
+
     public static void main(String[] args) {
         System.out.println("Ex1: " + ex1(new ArrayList<>(Arrays.asList(3, 44))));
         System.out.println("Ex2: " + ceasarCipher("abczw", 5));
         System.out.println("Ex3: ");
         ex3(Arrays.asList("hi", "hello", "marius"));
+        ex4(generateDefaultPresidentMap());
     }
 }
