@@ -5,10 +5,10 @@
 
 public class Ex2 {
 
-    private static int ASCII_CODE_UPPER_A = 65;
-    private static int ASCII_CODE_UPPER_Z = 90;
-    private static int ASCII_CODE_LOWER_A = 97;
-    private static int ASCII_CODE_LOWER_Z = 122;
+    private static final int ASCII_CODE_UPPER_A = 65;
+    private static final int ASCII_CODE_UPPER_Z = 90;
+    private static final int ASCII_CODE_LOWER_A = 97;
+    private static final int ASCII_CODE_LOWER_Z = 122;
 
     private static char decode(char character, int n){
         int result = character - n;
@@ -29,6 +29,6 @@ public class Ex2 {
     }
 
     public static void main(String[] args) {
-        System.out.println(decodeCaeser("yjxy",5));
+        System.out.println(decodeCaeser("hfjxfw",5));
     }
 }
