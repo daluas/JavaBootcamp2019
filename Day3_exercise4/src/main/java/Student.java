@@ -6,10 +6,12 @@ public class Student {
 
     private String lastName;
 
+
     public Student(int age, String firstName, String lastName) {
         this.age = age;
         this.firstName = firstName;
         this.lastName = lastName;
+
     }
 
     public int getAge() {
@@ -36,6 +38,7 @@ public class Student {
         this.lastName = lastName;
     }
 
+
     @Override
     public String toString() {
         return "Student{" +
@@ -44,4 +47,6 @@ public class Student {
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
+
 }
+
