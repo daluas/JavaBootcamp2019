@@ -16,3 +16,10 @@ comma at the end, after the last word. Major hint: there are two versions of red
 notes.
 4. Find the total number of characters (i.e., sum of the lengths) of the strings in the List.
 5. Find the number of words that contain an “h”
+
+
+
+Every class in highschool has a designated president. Because of that, we'll store all the classes as a Map<Student,List<Student>> 
+where the key is the president student and value List<Student> represents all the students in his class.
+Using this structure, aggregate all the students into a single list using both approaches, 
+declarative and with streams and print all the students name on the console.
