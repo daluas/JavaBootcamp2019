@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.function.IntUnaryOperator;
@@ -106,6 +107,52 @@ public class MyClass {
         System.out.println(words.stream().mapToInt(String::length).sum());
         System.out.println("----Task5----");
         System.out.println(words.stream().filter(elem -> elem.matches(".*[hH].*")).count());
+
+        //TODO Java8Exercises Exercise 4 (seful de clasa)
+        List<Student> students = new ArrayList<>();
+
+        Student student1 = new Student(13, "Ionel", "Popescu");
+        Student student2 = new Student(14, "Mihai", "Ionescu");
+        Student student3 = new Student(12, "Ghita", "Muresan");
+        Student student4 = new Student(15, "Dorel", "Constructor");
+
+        Student student5 = new Student(20, "Sorinel", "Common");
+        Student student6 = new Student(22, "Gal", "Final");
+        Student student7 = new Student(23, "Mircea", "Transient");
+        Student student8 = new Student(24, "Diana", "Clasa");
+
+        students.add(student1);
+        students.add(student2);
+        students.add(student3);
+        students.add(student4);
+
+        students.add(student5);
+        students.add(student6);
+        students.add(student7);
+        students.add(student8);
+
+        students.stream().filter(student->student.getAge()<20).forEach(stud->stud.setPresident(student1));
+        students.stream().filter(student->student.getAge()>=20).forEach(stud->stud.setPresident(student5));
+        Map<Student,List<Student>> mapOfStud = students.stream().collect(Collectors.groupingBy(Student::getPresident));
+        System.out.println(mapOfStud);
+
+        //Declarativ
+        System.out.println("======Declarativ======");
+        Map<Student,List<Student>> mapOfStud2 = new HashMap<>();
+        mapOfStud2.put(student1,new ArrayList<>());
+        mapOfStud2.put(student5,new ArrayList<>());
+        for(Student s : students)
+        {
+            if(s.getPresident().equals(student1))
+            {
+                mapOfStud2.get(student1).add(s);
+            }
+            else
+            {
+                mapOfStud2.get(student5).add(s);
+            }
+        }
+        System.out.println(mapOfStud2);
 
 
     }
