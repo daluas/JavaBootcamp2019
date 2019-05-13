@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="759f1be9-1e6f-46b2-acb6-7a69c34f17b7" name="Default" comment="" />
+    <list default="true" id="759f1be9-1e6f-46b2-acb6-7a69c34f17b7" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Excercitii/src/main/java/ExersiseTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Excercitii/src/main/java/ExersiseTwo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Excercitii/target/classes/ExersiseTwo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Excercitii/target/classes/ExersiseTwo.class" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/Excercitii/target/" />
     <ignored path="$PROJECT_DIR$/fdsa/target/" />
     <ignored mask="*.iml" />
@@ -24,8 +28,11 @@
       <file leaf-file-name="ExersiseTwo.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Excercitii/src/main/java/ExersiseTwo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="121" column="37" selection-start-line="121" selection-start-column="37" selection-end-line="121" selection-end-column="37" />
+            <state relative-caret-position="1046">
+              <caret line="108" column="108" selection-start-line="108" selection-start-column="108" selection-end-line="108" selection-end-column="108" />
+              <folding>
+                <element signature="e#477#486#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,8 +64,8 @@
         <option value="$PROJECT_DIR$/Excercitii/src/main/java/Test.java" />
         <option value="$PROJECT_DIR$/Excercitii/src/main/java/fdx.java" />
         <option value="$PROJECT_DIR$/fdsa/src/main/java/vczx.java" />
-        <option value="$PROJECT_DIR$/Excercitii/src/main/java/ExersiseTwo.java" />
         <option value="$PROJECT_DIR$/Excercitii/src/main/java/vcx.java" />
+        <option value="$PROJECT_DIR$/Excercitii/src/main/java/ExersiseTwo.java" />
       </list>
     </option>
   </component>
@@ -73,6 +80,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -110,9 +120,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -139,7 +146,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.vcx">
+  <component name="RunManager" selected="Application.ExersiseTwo">
     <configuration name="ExersiseTwo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ExersiseTwo" />
       <module name="Excercitii" />
@@ -235,8 +242,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.vcx" />
         <item itemvalue="Application.ExersiseTwo" />
+        <item itemvalue="Application.vcx" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Application.vczx" />
       </list>
@@ -267,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1557411789279</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Exercitii pe prima zi">
+      <created>1557747592339</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1557747592339</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -281,33 +295,34 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32924107" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32924107" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32924107" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32924107" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32924107" />
       <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32924107" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18550107" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18763326" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39955357" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32924107" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -329,6 +344,26 @@
     <entry file="file://$PROJECT_DIR$/Excercitii/src/main/java/vcx.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
+          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Excercitii/src/main/java/ExersiseTwo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2023">
+          <caret line="121" column="37" selection-start-line="121" selection-start-column="37" selection-end-line="121" selection-end-column="37" />
+          <folding>
+            <element signature="e#477#486#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Excercitii/pom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Excercitii/src/main/java/vcx.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
           <caret line="31" column="36" lean-forward="true" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
         </state>
       </provider>
@@ -344,59 +379,27 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Excercitii/src/main/java/fdx.java" />
-    <entry file="file://$PROJECT_DIR$/fdsa/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdsa/fdsa.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdsa/src/main/java/vczx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/fdsa/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/fdsa/fdsa.iml" />
+    <entry file="file://$PROJECT_DIR$/fdsa/src/main/java/vczx.java" />
     <entry file="file://$PROJECT_DIR$/Excercitii/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Excercitii/src/main/java/fdx.java" />
-    <entry file="file://$PROJECT_DIR$/fdsa/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdsa/fdsa.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdsa/src/main/java/vczx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/fdsa/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/fdsa/fdsa.iml" />
+    <entry file="file://$PROJECT_DIR$/fdsa/src/main/java/vczx.java" />
     <entry file="file://$PROJECT_DIR$/Excercitii/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Excercitii/src/main/java/Test.java" />
-    <entry file="file://$PROJECT_DIR$/fdsa/fdsa.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdsa/Student.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/fdsa/fdsa.iml" />
+    <entry file="file://$PROJECT_DIR$/fdsa/Student.java" />
     <entry file="file://$PROJECT_DIR$/Exercise1/src/Main.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/fdsa/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdsa/src/main/java/vczx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/fdsa/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/fdsa/src/main/java/vczx.java" />
     <entry file="file://$PROJECT_DIR$/Excercitii/src/main/java/fdx.java" />
     <entry file="file://$PROJECT_DIR$/Excercitii/src/main/java/Test.java" />
     <entry file="file://$PROJECT_DIR$/Excercitii/pom.xml">
@@ -411,8 +414,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Excercitii/src/main/java/ExersiseTwo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="121" column="37" selection-start-line="121" selection-start-column="37" selection-end-line="121" selection-end-column="37" />
+        <state relative-caret-position="1046">
+          <caret line="108" column="108" selection-start-line="108" selection-start-column="108" selection-end-line="108" selection-end-column="108" />
+          <folding>
+            <element signature="e#477#486#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

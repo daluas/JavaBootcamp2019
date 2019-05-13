@@ -106,7 +106,7 @@ public class ExersiseTwo {
         System.out.println("======TODO5=====");
 
 
-        students.stream().filter(stud -> stud.getGradesList().stream().allMatch(grade -> grade.getScore() < 5)).map(Student::getLastName).forEach(System.out::println);
+        students.stream().filter(stud -> stud.getGradesList().stream().allMatch(grade -> grade.getScore() >= 5)).map(Student::getLastName).forEach(System.out::println);
 
 
     }
