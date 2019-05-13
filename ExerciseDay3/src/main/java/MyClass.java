@@ -105,7 +105,7 @@ public class MyClass {
         System.out.println("----Task4----");
         System.out.println(words.stream().mapToInt(String::length).sum());
         System.out.println("----Task5----");
-        words.stream().filter(elem -> elem.matches(".*[hH].*")).forEach(System.out::println);
+        System.out.println(words.stream().filter(elem -> elem.matches(".*[hH].*")).count());
 
 
     }
