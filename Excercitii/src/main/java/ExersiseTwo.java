@@ -4,69 +4,56 @@ import java.util.stream.Collectors;
 
 public class ExersiseTwo {
 
-    public static Map<String,BiFunction<String,Double,Grades>> factory = new HashMap<>();
-    static
-    {
-        factory.put("Grades",Grades::new);
-    }
-    public static Random rand = new Random(47);
-    public static List<Integer> getDivisors(int x)
-    {
+    public static Map<String, BiFunction<String, Double, Grades>> factory = new HashMap<>();
 
-       if(x<0)
-       {
-           x=-x;
-       }
+    static {
+        factory.put("Grades", Grades::new);
+    }
+
+    public static Random rand = new Random(47);
+
+    public static List<Integer> getDivisors(int x) {
+
+        if (x < 0) {
+            x = -x;
+        }
         List<Integer> list = new ArrayList<Integer>();
-        for(int i=1;i<=x;i++)
-        {
-            if(x%i==0)
-            {
+        for (int i = 1; i <= x; i++) {
+            if (x % i == 0) {
                 list.add(i);
             }
         }
-        if(list.isEmpty())
-        {
+        if (list.isEmpty()) {
             return null;
-        }
-        else
-        {
+        } else {
             return list;
         }
 
 
     }
-    public static void numberWithSquare(int first,int second)
-    {
 
-        if(first>second)
-        {
+    public static void numberWithSquare(int first, int second) {
+
+        if (first > second) {
             System.out.println("Bounds error");
         }
         List<Integer> list;
         int sum;
-        int counter=0;
-        for(int i=first;i<=second;i++)
-        {
-            if((list=getDivisors(i))!=null)
-            {
-               sum = list.stream().mapToInt(x->x*x).sum();
-               if(Math.sqrt(sum)==(int)Math.sqrt(sum))
-               {
-                   System.out.println(i);
-                   counter++;
-               }
+        int counter = 0;
+        for (int i = first; i <= second; i++) {
+            if ((list = getDivisors(i)) != null) {
+                sum = list.stream().mapToInt(x -> x * x).sum();
+                if (Math.sqrt(sum) == (int) Math.sqrt(sum)) {
+                    System.out.println(i);
+                    counter++;
+                }
 
             }
         }
-        System.out.println("We found "+counter+" numbers");
+        System.out.println("We found " + counter + " numbers");
 
 
     }
-public static void verify(List<Student> list)
-{
-
-}
 
     public static void main(String[] args) {
 
@@ -100,32 +87,26 @@ public static void verify(List<Student> list)
         //TODO Create a method that displays the the lastName of the students that have no grade lower than 5.
 
         System.out.println("======TODO0=====");
-        numberWithSquare(-100,-7);
+        numberWithSquare(-100, -7);
 
         System.out.println("======TODO1=====");
         students.stream().sorted(Comparator.comparing(Student::getAge)).forEach(System.out::println);
         System.out.println("======TODO2=====");
-        students.stream().filter(student->student.getAge()>20).forEach(System.out::println);
+        students.stream().filter(student -> student.getAge() > 20).forEach(System.out::println);
         System.out.println("======TODO3=====");
         students.stream().filter(student -> student.getLastName().matches("[A-Za-z]*escu")).forEach(System.out::println);
         System.out.println("======TODO4=====");
 
 
-        for(Student stud : students)
-        {
-            stud.insertGrade(factory.get("Grades").apply("Matematica",(double)rand.nextInt(10)));
-        }
-        for(Student stud : students)
-        {
-            stud.insertGrade(factory.get("Grades").apply("Matematica",(double)rand.nextInt(10)));
-        }
+        students.stream().forEach(stud -> stud.insertGrade(factory.get("Grades").apply("Matematica", (double) rand.nextInt(10))));
+        students.stream().forEach(stud -> stud.insertGrade(factory.get("Grades").apply("Matematica", (double) rand.nextInt(10))));
         System.out.println(students);
 
 
         System.out.println("======TODO5=====");
 
 
-        students.stream().filter(stud->stud.getGradesList().stream().allMatch(grade->grade.getScore()<5)).map(Student::getLastName).forEach(System.out::println);
+        students.stream().filter(stud -> stud.getGradesList().stream().allMatch(grade -> grade.getScore() < 5)).map(Student::getLastName).forEach(System.out::println);
 
 
     }
