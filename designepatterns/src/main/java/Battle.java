@@ -20,8 +20,12 @@ public class Battle implements  Subject{
 
     public void notifyObserver() {
         for(Observer observer:observers) {
-            observer.update(winner);
+            observer.update();
         }
+    }
+
+    public Object getUpdate() {
+        return this.winner;
     }
 
     void addArmies(Army armyOne, Army armyTwo) {
