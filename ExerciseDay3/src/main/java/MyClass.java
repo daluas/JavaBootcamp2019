@@ -1,4 +1,4 @@
-import java.sql.SQLOutput;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.function.IntUnaryOperator;
@@ -111,15 +111,24 @@ public class MyClass {
         System.out.println("====Exercise3====");
         List<String> words = Arrays.asList("Hello", "Hi", "Somebody", "Ana", "has", "apples", "annhhHa", "anaH");
         System.out.println("----Task1----");
-        System.out.println(words.stream().reduce((a, b) -> a.toUpperCase() + b.toUpperCase()).get());
+        System.out.println(words.stream()
+                .reduce("",(a, b) -> a.toUpperCase() + b.toUpperCase()));
         System.out.println("----Task2----");
-        System.out.println(words.stream().map(String::toUpperCase).reduce(String::concat).get());
+        System.out.println(words.stream()
+                .map(String::toUpperCase)
+                .reduce(String::concat)
+                .orElse(""));
         System.out.println("----Task3----");
-        System.out.println(words.stream().collect(Collectors.joining(", ")));
+        System.out.println(words.stream()
+                .collect(Collectors.joining(", ")));
         System.out.println("----Task4----");
-        System.out.println(words.stream().mapToInt(String::length).sum());
+        System.out.println(words.stream()
+                .mapToInt(String::length)
+                .sum());
         System.out.println("----Task5----");
-        System.out.println(words.stream().filter(elem -> elem.matches(".*[hH].*")).count());
+        System.out.println(words.stream()
+                .filter(elem -> elem.matches(".*[hH].*"))
+                .count());
 
         //TODO Java8Exercises Exercise 4 (seful de clasa)
         List<Student> students = new ArrayList<>();
