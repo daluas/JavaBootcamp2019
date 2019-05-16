@@ -1,58 +1,65 @@
 import java.util.*;
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ExersiseTwo {
 
-    public static Map<String, BiFunction<String, Double, Grades>> factory = new HashMap<>();
+    public static Map<String, BiFunction<String, Double, Grades>> Gradesfactory = new HashMap<>();
 
     static {
-        factory.put("Grades", Grades::new);
+        Gradesfactory.put("Grades", Grades::new);
     }
 
     public static Random rand = new Random(47);
 
-    public static List<Integer> getDivisors(int x) {
+    //TODO NumberWithSquareSumOfSquareDivisorsFinder
 
-        if (x < 0) {
-            x = -x;
+    private static List<Integer> getDivisors(int testedNumber) {
+
+        final int constantTestedNumber;
+
+        if (testedNumber < 0) {
+           testedNumber = -testedNumber;
         }
-        List<Integer> list = new ArrayList<Integer>();
-        for (int i = 1; i <= x; i++) {
-            if (x % i == 0) {
-                list.add(i);
-            }
-        }
-        if (list.isEmpty()) {
+
+        constantTestedNumber = testedNumber;
+
+        return IntStream.rangeClosed(1,testedNumber)
+                 .filter(number->constantTestedNumber % number == 0)
+                 .boxed()
+                 .collect(Collectors.toList());
+    }
+
+    public static List<Integer> numberWithSquare(int firstBound, int secondBound) {
+
+        if (firstBound > secondBound) {
+            System.out.println("Bounds error");
             return null;
-        } else {
-            return list;
         }
+
+       return IntStream.rangeClosed(firstBound,secondBound)
+               .filter(ExersiseTwo::verifyAllConditions)
+               .boxed()
+               .collect(Collectors.toList());
 
 
     }
+    private static boolean verifySquareCondition(int sumbOfPowDivisors){
 
-    public static void numberWithSquare(int first, int second) {
+        return Math.sqrt(sumbOfPowDivisors) == (int) Math.sqrt(sumbOfPowDivisors);
+    }
+    private static int getSumOfPowDivisors(int testedNumber){
+        return getDivisors(testedNumber).stream()
+                .map(element->element*element)
+                .reduce(0,Integer::sum);
+    }
+    private static boolean verifyAllConditions(int testedNumber){
 
-        if (first > second) {
-            System.out.println("Bounds error");
-        }
-        List<Integer> list;
-        int sum;
-        int counter = 0;
-        for (int i = first; i <= second; i++) {
-            if ((list = getDivisors(i)) != null) {
-                sum = list.stream().mapToInt(x -> x * x).sum();
-                if (Math.sqrt(sum) == (int) Math.sqrt(sum)) {
-                    System.out.println(i);
-                    counter++;
-                }
-
-            }
-        }
-        System.out.println("We found " + counter + " numbers");
-
-
+        return Optional.of(testedNumber)
+                .map(ExersiseTwo::getSumOfPowDivisors)
+                .filter(ExersiseTwo::verifySquareCondition)
+                .isPresent();
     }
 
     public static void main(String[] args) {
@@ -86,27 +93,41 @@ public class ExersiseTwo {
         //TODO Add grades to the students
         //TODO Create a method that displays the the lastName of the students that have no grade lower than 5.
 
-        System.out.println("======TODO0=====");
-        numberWithSquare(-100, -7);
+        System.out.println("======TODO0 NumberWithSquareSumOfSquareDivisorsFinder =====");
+
+        System.out.println("In acest interval se gasesc numerele : " + numberWithSquare(-100, -7) + " care respecta conditia");
+        System.out.println("In acest interval se gasesc numerele : " + numberWithSquare(1,1) + "  care respecta conditia");
+        System.out.println("In acest interval se gasesc numerele : " + numberWithSquare(2,3) + "  care respecta conditia");
 
         System.out.println("======TODO1=====");
-        students.stream().sorted(Comparator.comparing(Student::getAge)).forEach(System.out::println);
+        students.stream()
+                .sorted(Comparator.comparing(Student::getAge))
+                .forEach(System.out::println);
         System.out.println("======TODO2=====");
-        students.stream().filter(student -> student.getAge() > 20).forEach(System.out::println);
+        students.stream()
+                .filter(student -> student.getAge() > 20)
+                .forEach(System.out::println);
         System.out.println("======TODO3=====");
-        students.stream().filter(student -> student.getLastName().matches("[A-Za-z]*escu")).forEach(System.out::println);
+        students.stream()
+                .filter(student -> student.getLastName().matches("[A-Za-z]*escu"))
+                .forEach(System.out::println);
         System.out.println("======TODO4=====");
 
 
-        students.stream().forEach(stud -> stud.insertGrade(factory.get("Grades").apply("Matematica", (double) rand.nextInt(10))));
-        students.stream().forEach(stud -> stud.insertGrade(factory.get("Grades").apply("Matematica", (double) rand.nextInt(10))));
+        students.forEach(stud -> stud.insertGrade(Gradesfactory.get("Grades").apply("Matematica", (double) rand.nextInt(10))));
+        students.forEach(stud -> stud.insertGrade(Gradesfactory.get("Grades").apply("Matematica", (double) rand.nextInt(10))));
         System.out.println(students);
 
 
         System.out.println("======TODO5=====");
 
 
-        students.stream().filter(stud -> stud.getGradesList().stream().allMatch(grade -> grade.getScore() >= 5)).map(Student::getLastName).forEach(System.out::println);
+        students.stream()
+                .filter(stud -> stud.getGradesList()
+                        .stream()
+                        .allMatch(grade -> grade.getScore() >= 5))
+                .map(Student::getLastName)
+                .forEach(System.out::println);
 
 
     }

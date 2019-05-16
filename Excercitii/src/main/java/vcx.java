@@ -11,17 +11,23 @@ public class vcx {
 
     public static void showElement(int sumOfList) {
 
-        int missElement = IntStream.range(0, 100).sum() - sumOfList;
+        int missElement = IntStream.range(0, 100)
+                .sum() - sumOfList;
         System.out.println(missElement);
 
     }
 
     public static void main(String args[]) {
 
-        List<Integer> list = Stream.iterate(0, n -> rand.nextInt(100)).distinct().limit(100).collect(Collectors.toList());
+        List<Integer> list = Stream.iterate(0, n -> rand.nextInt(100))
+                .distinct().limit(100)
+                .collect(Collectors.toList());
+
         int deleteIndex = rand.nextInt(100);
         list.remove(deleteIndex);
-        int sumOfList = list.stream().mapToInt(a -> a).sum();
+        int sumOfList = list.stream()
+                .mapToInt(a -> a)
+                .sum();
 
         long timeBefore = System.currentTimeMillis();
         showElement(sumOfList);
