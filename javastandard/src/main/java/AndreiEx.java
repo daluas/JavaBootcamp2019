@@ -35,14 +35,27 @@ public class AndreiEx {
     }
 
     private static List<Integer> generateList(int size) {
-        List<Integer> indexes = new LinkedList<>();
-        List<Integer> result = new ArrayList<>();
+        List<Integer> indexes;
+        List<Integer> result;
         Random random = new Random();
 
+        indexes = generateIndexesList(size);
+
+        result = createRandomList(size, indexes, random);
+
+        return result;
+    }
+
+    private static List<Integer> generateIndexesList(int size) {
+        List<Integer> indexes = new LinkedList<>();
         for(int i = 1; i <= size; i++) {
             indexes.add(i);
         }
+        return indexes;
+    }
 
+    private static List<Integer> createRandomList(int size, List<Integer> indexes, Random random) {
+        List<Integer> result = new ArrayList<>();
         int sizeArray = indexes.size();
         for(int i = 1; i <= size - 1; i++) {
             int index = random.nextInt(sizeArray);
@@ -50,7 +63,6 @@ public class AndreiEx {
             indexes.remove(index);
             sizeArray--;
         }
-
         return result;
     }
 

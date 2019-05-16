@@ -10,52 +10,63 @@ class StudentComparator implements Comparator<Student> {
 
 public class StefanEx {
 
-    private static long findNumberSumOfDivisorsSquared(int number) {
+    public static long findNumberSumOfDivisorsSquared(int number) {
         long sum = 1;
         for(int i = 2; i < number; i++) {
-            if(number % i == 0) {
-                sum += i*i;
-            }
+            sum = getSquaredSum(number, sum, i);
         }
         sum += number*number;
         return sum;
     }
 
-    private static boolean isPerfectSquare(long number) {
+    private static long getSquaredSum(int number, long sum, int i) {
+        if(number % i == 0) {
+            sum += i*i;
+        }
+        return sum;
+    }
+
+    public static boolean isPerfectSquare(long number) {
         double sqrt = Math.sqrt(number);
         return (sqrt - Math.floor(sqrt)) == 0;
     }
 
-    private static List<Integer> numberWithSquareSumOfSquareDivisorsFinder(int begin, int end) {
+    public static List<Integer> numberWithSquareSumOfSquareDivisorsFinder(int begin, int end) {
         List<Integer> result = new ArrayList<>();
         for(int number = begin; number <= end; number++) {
             long aux = findNumberSumOfDivisorsSquared(number);
-            if(isPerfectSquare(aux)) {
-                result.add(number);
-            }
+            addIfPerfectedSquared(result, number, aux);
         }
         return result;
     }
 
-    private static void displayStudentsOlderThan20(List<Student>students) {
+    private static void addIfPerfectedSquared(List<Integer> result, int number, long aux) {
+        if(isPerfectSquare(aux)) {
+            result.add(number);
+        }
+    }
+
+    public static void displayStudentsOlderThan20(List<Student>students) {
         System.out.println("Students with age greater than 20:");
         for (Student student : students) {
-            if(student.getAge() > 20) {
-                System.out.println(student);
-            }
+            showIfCondtionFulfilled(student, student.getAge() > 20);
         }
     }
 
-    private static void displayStudentsWithLastnameEndingOfEscu(List<Student>students) {
+    private static void showIfCondtionFulfilled(Student student, boolean condition) {
+        if (condition) {
+            System.out.println(student);
+        }
+    }
+
+    public static void displayStudentsWithLastnameEndingOfEscu(List<Student>students) {
         System.out.println("Students ending with escu:");
         for (Student student : students) {
-            if(student.getLastName().endsWith("escu")) {
-                System.out.println(student);
-            }
+            showIfCondtionFulfilled(student, student.getLastName().endsWith("escu"));
         }
     }
 
-    private static void addDefaultStudentGrades(List<Student> students) {
+    public static void addDefaultStudentGrades(List<Student> students) {
         for (Student student : students) {
             Random random = new Random();
             List<Grades> grades = new ArrayList<>();
@@ -66,16 +77,18 @@ public class StefanEx {
         }
     }
 
-    private static boolean checkIfGradesGreaterThanFive(List<Grades> grades) {
+    public static boolean checkIfGradesGreaterThanFive(List<Grades> grades) {
         for(Grades grade : grades) {
-            if(grade.getScore() < 5) {
-                return false;
-            }
+            if (checkIfGradeLowerThan5(grade)) return false;
         }
         return true;
     }
 
-    private static void displayStudentsWithGradesAboveFive(List<Student>students) {
+    private static boolean checkIfGradeLowerThan5(Grades grade) {
+        return grade.getScore() < 5;
+    }
+
+    public static void displayStudentsWithGradesAboveFive(List<Student>students) {
         for (Student student : students) {
             if(checkIfGradesGreaterThanFive(student.getGrades())) {
                 System.out.println(student.getLastName());
