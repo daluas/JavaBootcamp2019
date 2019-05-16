@@ -5,9 +5,9 @@ import java.util.Random;
 public class ExercitiiAndrei {
 
 
-    private static List<Integer> numberList = new ArrayList<Integer>();
+    public static List<Integer> numberList = new ArrayList<Integer>();
     //First Exercise
-    private static int nearestToTen(int num1, int num2){
+    public static int nearestToTen(int num1, int num2){
         int dif1, dif2;
         dif1 = Math.abs(10 - num1);
         dif2 = Math.abs(10 - num2);
@@ -21,7 +21,7 @@ public class ExercitiiAndrei {
     }
 
     //Second Exercise
-    private static String stringTimes(String string, int multiply){
+    public static String stringTimes(String string, int multiply){
         String stringHelper = string;
 
         while (multiply > 1){
@@ -34,15 +34,16 @@ public class ExercitiiAndrei {
 
     //Third Exercise
 
-    private static String stringX(String string){
+    public static String stringX(String string){
 
-        return string.substring(0,1) + string.substring(1,string.length()-1).replaceAll("x","") +
+        return string.substring(0,1) + string.substring(1,string.length()-1).
+                replaceAll("x","") +
                 string.substring(string.length()-1,string.length() );
 
     }
 
     //Forth Exercise
-    private static void generateList(int size){
+    public static void generateList(int size){
         int toBeRemoved, it;
         Random rand = new Random();
 
@@ -54,7 +55,7 @@ public class ExercitiiAndrei {
         numberList.remove(toBeRemoved);
     }
 
-    private static int findMissingNumber(int size){
+    public static int findMissingNumber(int size){
         int sum1To100 = 0, sumMissingNumber = 0;
 
         generateList(size);
