@@ -1,9 +1,15 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Battle {
+public class Battle implements Subject {
     private String winner;
-    private List<Commander> commanders = new ArrayList<>();
+    private ArrayList<Commander1> commanders;
+
+    public Battle(){
+        this.commanders = new ArrayList<Commander1>();
+        winner = "";
+    }
 
     public String getWinner() {
         return winner;
@@ -11,15 +17,20 @@ public class Battle {
 
     public void setWinner(String winner){
         this.winner = winner;
-        notifyCommanders();
+        notifyCommander();
     }
 
-    public void addCommander(Commander commander){
-        commanders.add(commander);
+    public void addCommander(Commander1 commander){
+        this.commanders.add(commander);
     }
 
-    private void notifyCommanders() {
-        for(Commander comander : commanders){
+    @Override
+    public void removeCommander(Commander1 commander) {
+        this.commanders.remove(commander);
+    }
+
+    public void notifyCommander() {
+        for(Commander1 comander : commanders){
             comander.update();
         }
     }
@@ -27,10 +38,15 @@ public class Battle {
     public void battle(Army army1, Army army2){
 
         if(army1.bombardStrength() < army2.bombardStrength()){
-            winner = "Army2";
+            winner = army2.getName();
         }else {
-            winner = "Army1";
+            winner = army1.getName();
         }
-        notifyCommanders();
+        notifyCommander();
+    }
+
+    @Override
+    public Object getUpdate() {
+        return this.winner;
     }
 }

@@ -13,7 +13,7 @@ abstract class Unit {
         return this.depth;
     }
 
-    public List<Unit> getComposite(){
+    public CompositeUnit getComposite(){
         return null;
     }
 }

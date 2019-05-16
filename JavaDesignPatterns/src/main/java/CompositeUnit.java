@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 abstract class CompositeUnit extends Unit {
-    protected List<Unit> units;
+    ArrayList<Unit> units = new ArrayList<Unit>();
 
-    public List<Unit> getComposite(){
-        return this.units;
+    public CompositeUnit getComposite(){
+        return this;
     }
     public void addUnit(Unit unit){
         for(Unit thisUnit : units){
-            if(unit == thisUnit){
+            if(thisUnit.equals(unit)){
                 return;
             }
         }

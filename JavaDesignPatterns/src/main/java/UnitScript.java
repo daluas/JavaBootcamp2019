@@ -2,9 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UnitScript {
-    public List<Unit> joinExisting(Unit newUnit, Unit occupyingUnit){
-        List<Unit> comp = new ArrayList<>();
-        comp = occupyingUnit.getComposite();
+
+    static Army joinExisting(Unit newUnit, Unit occupyingUnit, String name){
+        Army comp = (Army) occupyingUnit.getComposite();
+        if(comp != null){
+            comp = new Army(name);
+            comp.addUnit(occupyingUnit);
+            comp.addUnit(newUnit);
+        }
 
         return comp;
     }
