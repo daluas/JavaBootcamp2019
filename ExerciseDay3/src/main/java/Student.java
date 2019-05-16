@@ -15,6 +15,7 @@ public class Student {
     public Student getPresident() { return president; }
 
     public Student(int age, String firstName, String lastName) {
+
         this.age = age;
         this.firstName = firstName;
         this.lastName = lastName;

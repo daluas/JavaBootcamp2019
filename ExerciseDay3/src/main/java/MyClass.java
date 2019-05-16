@@ -7,18 +7,28 @@ import java.util.stream.Stream;
 public class MyClass {
     //Rezolvare Exericitiu 1 din Java8Exercises
     public static String verifyOddEven(int number) {
+
         if (number % 2 == 0) {
+
             return "e" + number;
-        } else {
-            return "o" + number;
         }
+        return "o" + number;
+
     }
 
-    public static Optional<String> evenOrOdd(List<Integer> list) {
+    public static String evenOrOdd(List<Integer> numberList) {
 
-        return Optional.ofNullable(list)
-                .map(l -> l.stream()
-                        .filter(Objects::nonNull).map(MyClass::verifyOddEven).collect(Collectors.joining(", ")));
+        return Optional.ofNullable(numberList)
+                .map(MyClass::getFormatedParity)
+                .orElse("The list is null");
+    }
+
+    public static String getFormatedParity(List<Integer> numberList){
+        return numberList.stream()
+                .filter(Objects::nonNull)
+                .map(MyClass::verifyOddEven)
+                .collect(Collectors.joining(", "));
+
     }
 
     //Rezolvare Exercitiu 2 din Java8Exercises
@@ -28,34 +38,34 @@ public class MyClass {
         boolean isUpper = false;
         if (letter == 32) {
             return (letter += N);
-        } else {
-            if (letter <= 90) {
-                letter += 32;
-                isUpper = true;
-            }
-            if (letter + N > 122) {
-                return (isUpper) ? (letter = N - 58 + letter) : (letter = N - 26 + letter);
-            }
-            return (isUpper) ? (letter = letter - (32 - N)) : (letter += N);
-
         }
+        if (letter <= 90) {
+            letter += 32;
+            isUpper = true;
+        }
+        if (letter + N > 122) {
+            return (isUpper) ? (letter = N - 58 + letter) : (letter = N - 26 + letter);
+        }
+        return (isUpper) ? (letter = letter - (32 - N)) : (letter += N);
+
+
     }
 
     public static int findPreviousLetter(int letter) {
         boolean isUpper = false;
         if (letter == (32 + N)) {
             return (letter -= N);
-        } else {
-            if (letter < 97) {
-                letter += 32;
-                isUpper = true;
-            }
-            if (letter - N < 97) {
-                return (isUpper) ? (letter = 123 - N + (letter - 97) - 32) : (letter = 123 - N + (letter - 97));
-            }
-            return (isUpper) ? (letter = letter - (32 + N)) : (letter -= N);
-
         }
+        if (letter < 97) {
+            letter += 32;
+            isUpper = true;
+        }
+        if (letter - N < 97) {
+            return (isUpper) ? (letter = 123 - N + (letter - 97) - 32) : (letter = 123 - N + (letter - 97));
+        }
+        return (isUpper) ? (letter = letter - (32 + N)) : (letter -= N);
+
+
     }
 
     public static String codeOrDecodeCesar(String codeString, IntUnaryOperator modify) {
@@ -63,8 +73,8 @@ public class MyClass {
             return "Nu sunt respectate cerintele asupra stringului de input";
         }
         char[] arrayOfCode = codeString.toCharArray();
-        for (int i = 0; i < arrayOfCode.length; i++) {
-            arrayOfCode[i] = (char) modify.applyAsInt(arrayOfCode[i]);
+        for (int charIndex = 0; charIndex < arrayOfCode.length; charIndex++) {
+            arrayOfCode[charIndex] = (char) modify.applyAsInt(arrayOfCode[charIndex]);
         }
         return new String(arrayOfCode);
     }
@@ -73,14 +83,17 @@ public class MyClass {
         //TODO Java8Exercises Exercise 1
         System.out.println("====Exercise1====");
 
-        List<Integer> list = Stream.iterate(0, n -> n + 1).limit(10).collect(Collectors.toList());
-        System.out.println(MyClass.evenOrOdd(list).orElse("Lista este null "));
-        System.out.println(MyClass.evenOrOdd(null).orElse("Lista este null "));
+        List<Integer> list = Stream.iterate(0, n -> n + 1)
+                .limit(10)
+                .collect(Collectors.toList());
+
+        System.out.println(MyClass.evenOrOdd(list));
+        System.out.println(MyClass.evenOrOdd(null));
         System.out.println(MyClass.evenOrOdd(new ArrayList<>()));
         List<Integer> listNull = new ArrayList<>();
         listNull.add(null);
         listNull.add(2);
-        System.out.println(MyClass.evenOrOdd(listNull).orElse("Lista este null"));
+        System.out.println(MyClass.evenOrOdd(listNull));
 
         //TODO Java8Exercises Exercise 2
         System.out.println("====Exercise2====");
@@ -131,9 +144,15 @@ public class MyClass {
         students.add(student7);
         students.add(student8);
 
-        students.stream().filter(student->student.getAge()<20).forEach(stud->stud.setPresident(student1));
-        students.stream().filter(student->student.getAge()>=20).forEach(stud->stud.setPresident(student5));
-        Map<Student,List<Student>> mapOfStud = students.stream().collect(Collectors.groupingBy(Student::getPresident));
+        students.stream()
+                .filter(student->student.getAge()<20)
+                .forEach(stud->stud.setPresident(student1));
+        students.stream()
+                .filter(student->student.getAge()>=20)
+                .forEach(stud->stud.setPresident(student5));
+        Map<Student,List<Student>> mapOfStud = students.stream()
+                .collect(Collectors.groupingBy(Student::getPresident));
+
         System.out.println(mapOfStud);
 
         //Declarativ
