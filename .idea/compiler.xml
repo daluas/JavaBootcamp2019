@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="JavaDay3" />
+        <module name="JavaDesignPatterns" />
         <module name="JavaSE" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="JavaDay3" target="8" />
+      <module name="JavaDesignPatterns" target="7" />
       <module name="JavaSE" target="8" />
     </bytecodeTargetLevel>
   </component>

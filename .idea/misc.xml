@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/JavaSE/pom.xml" />
         <option value="$PROJECT_DIR$/JavaDay3/pom.xml" />
+        <option value="$PROJECT_DIR$/JavaDesignPatterns/pom.xml" />
       </list>
     </option>
   </component>
