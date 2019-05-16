@@ -11,6 +11,10 @@ class StudentComparator implements Comparator<Student> {
 public class StefanEx {
 
     public static long findNumberSumOfDivisorsSquared(int number) {
+        if(number == 0)
+            return 0;
+        if(number == 1)
+            return 1;
         long sum = 1;
         for(int i = 2; i < number; i++) {
             sum += getDivisorSquaredIfNumberDivedPerfectly(number, i);
@@ -40,8 +44,8 @@ public class StefanEx {
         return result;
     }
 
-    public static void addIfPerfectedSquared(List<Integer> result, int number, long aux) {
-        if(isPerfectSquare(aux)) {
+    public static void addIfPerfectedSquared(List<Integer> result, int number, long divisorSum) {
+        if(isPerfectSquare(divisorSum)) {
             result.add(number);
         }
     }
@@ -66,7 +70,8 @@ public class StefanEx {
         }
     }
 
-    public static void addDefaultStudentGrades(List<Student> students) {
+    public static List<Student> createDefaultStudentGrades(List<Student> students) {
+        List<Student> result = new ArrayList<>();
         for (Student student : students) {
             Random random = new Random();
             List<Grades> grades = new ArrayList<>();
@@ -74,7 +79,9 @@ public class StefanEx {
             grades.add(new Grades(random.nextInt(10) + 1, "Informatica"));
             grades.add(new Grades(random.nextInt(10) + 1, "Istorie"));
             student.setGrades(grades);
+            result.add(student);
         }
+        return result;
     }
 
     public static boolean checkIfGradesGreaterThanFive(List<Grades> grades) {
@@ -100,7 +107,7 @@ public class StefanEx {
     public static void main(String[] args) {
 
 
-        //TODO numberWithSquareSumOfSquareDivisorsFinder
+        // numberWithSquareSumOfSquareDivisorsFinder
         /// Given the limits of an interval, find all numbers in that interval for which the sum of the square of it's divisors is a perfect square
         /// The interval is closed on both ends (the limits should also be checked)
         /// Example:
@@ -108,7 +115,7 @@ public class StefanEx {
         /// The divisors squared are [1, 4, 9, 36, 49, 196, 441, 1764]
         /// The sum of the squared divisors is 2500 which is the perfect square of 50
         /// This means 42 respects the rule
-
+        numberWithSquareSumOfSquareDivisorsFinder(-3, 0);
         System.out.println(numberWithSquareSumOfSquareDivisorsFinder(10, 1000));
         System.out.println(numberWithSquareSumOfSquareDivisorsFinder(1000, 1500));
 
@@ -124,18 +131,18 @@ public class StefanEx {
         students.add(student3);
         students.add(student4);
 
-        //TODO Sort the students by age
+        // Sort the students by age
         students.sort(new StudentComparator());
         System.out.println(students);
-        //TODO Display only the students that are above 20 years
+        // Display only the students that are above 20 years
         displayStudentsOlderThan20(students);
-        //TODO Display only the students that have their lastname ending in escu
+        // Display only the students that have their lastname ending in escu
         displayStudentsWithLastnameEndingOfEscu(students);
-        //TODO Create a new Class named Grades with the following members: score and disciplineName. Each Student can have one or more grades at a certain discipline
-        //TODO Add grades to the students
-        addDefaultStudentGrades(students);
+        // Create a new Class named Grades with the following members: score and disciplineName. Each Student can have one or more grades at a certain discipline
+        // Add grades to the students
+        students = createDefaultStudentGrades(students);
         System.out.println(students);
-        //TODO Create a method that displays the the lastName of the students that have no grade lower than 5.
+        // Create a method that displays the the lastName of the students that have no grade lower than 5.
         displayStudentsWithGradesAboveFive(students);
 
         // Sort the students by age
@@ -148,7 +155,7 @@ public class StefanEx {
         students.stream().filter(x -> x.getLastName().endsWith("escu")).forEach(System.out::println);
         // Create a new Class named Grades with the following members: score and disciplineName. Each Student can have one or more grades at a certain discipline
         // Add grades to the students
-        addDefaultStudentGrades(students);
+        students = createDefaultStudentGrades(students);
         // Create a method that displays the the lastName of the students that have no grade lower than 5.
         System.out.println("\nStudents with grades above 20: ");
         students.stream().filter(x -> x.getGrades().stream().allMatch(a -> a.getScore() >= 5)).
