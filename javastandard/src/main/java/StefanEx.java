@@ -13,17 +13,17 @@ public class StefanEx {
     public static long findNumberSumOfDivisorsSquared(int number) {
         long sum = 1;
         for(int i = 2; i < number; i++) {
-            sum = getSquaredSum(number, sum, i);
+            sum += getNumberSquaredIfEven(number, i);
         }
         sum += number*number;
         return sum;
     }
 
-    private static long getSquaredSum(int number, long sum, int i) {
+    private static long getNumberSquaredIfEven(int number, int i) {
         if(number % i == 0) {
-            sum += i*i;
+            return i*i;
         }
-        return sum;
+        return 0;
     }
 
     public static boolean isPerfectSquare(long number) {
