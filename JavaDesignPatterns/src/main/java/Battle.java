@@ -24,8 +24,13 @@ public class Battle {
         }
     }
 
-    public String battle(Army army1, Army army2){
+    public void battle(Army army1, Army army2){
 
-        return "Ana are mere";
+        if(army1.bombardStrength() < army2.bombardStrength()){
+            winner = "Army2";
+        }else {
+            winner = "Army1";
+        }
+        notifyCommanders();
     }
 }

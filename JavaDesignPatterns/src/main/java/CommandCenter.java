@@ -1,4 +1,4 @@
-public class CommandCenter extends Commander {
+public class CommandCenter implements Commander1 {
 
     public CommandCenter(Battle battle){
         this.battle = battle;

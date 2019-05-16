@@ -10,7 +10,7 @@ abstract class CompositeUnit extends Unit {
     public void addUnit(Unit unit){
         for(Unit thisUnit : units){
             if(unit == thisUnit){
-                break;
+                return;
             }
         }
         unit.setDepth(this.depth + 1);
