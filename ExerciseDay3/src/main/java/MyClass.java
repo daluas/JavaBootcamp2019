@@ -160,15 +160,18 @@ public class MyClass {
         Map<Student,List<Student>> mapOfStud2 = new HashMap<>();
         mapOfStud2.put(student1,new ArrayList<>());
         mapOfStud2.put(student5,new ArrayList<>());
-        for(Student s : students)
-        {
-            if(s.getPresident().equals(student1))
-            {
-                mapOfStud2.get(student1).add(s);
+
+        for(Student s : students) {
+
+            if(s.getPresident().equals(student1)) {
+
+                mapOfStud2.get(student1)
+                        .add(s);
             }
-            else
-            {
-                mapOfStud2.get(student5).add(s);
+            else {
+
+                mapOfStud2.get(student5)
+                        .add(s);
             }
         }
         System.out.println(mapOfStud2);
