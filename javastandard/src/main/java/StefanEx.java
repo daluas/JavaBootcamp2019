@@ -13,15 +13,15 @@ public class StefanEx {
     public static long findNumberSumOfDivisorsSquared(int number) {
         long sum = 1;
         for(int i = 2; i < number; i++) {
-            sum += getNumberSquaredIfEven(number, i);
+            sum += getDivisorSquaredIfNumberDivedPerfectly(number, i);
         }
         sum += number*number;
         return sum;
     }
 
-    private static long getNumberSquaredIfEven(int number, int i) {
-        if(number % i == 0) {
-            return i*i;
+    public static long getDivisorSquaredIfNumberDivedPerfectly(int number, int divisor) {
+        if(number % divisor == 0) {
+            return divisor*divisor;
         }
         return 0;
     }
@@ -40,7 +40,7 @@ public class StefanEx {
         return result;
     }
 
-    private static void addIfPerfectedSquared(List<Integer> result, int number, long aux) {
+    public static void addIfPerfectedSquared(List<Integer> result, int number, long aux) {
         if(isPerfectSquare(aux)) {
             result.add(number);
         }
@@ -53,7 +53,7 @@ public class StefanEx {
         }
     }
 
-    private static void showIfCondtionFulfilled(Student student, boolean condition) {
+    public static void showIfCondtionFulfilled(Student student, boolean condition) {
         if (condition) {
             System.out.println(student);
         }
@@ -84,7 +84,7 @@ public class StefanEx {
         return true;
     }
 
-    private static boolean checkIfGradeLowerThan5(Grades grade) {
+    public static boolean checkIfGradeLowerThan5(Grades grade) {
         return grade.getScore() < 5;
     }
 
