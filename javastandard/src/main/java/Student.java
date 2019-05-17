@@ -1,6 +1,23 @@
 import java.util.List;
+import java.util.Objects;
 
 public class Student {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return age == student.age &&
+                Objects.equals(firstName, student.firstName) &&
+                Objects.equals(lastName, student.lastName) &&
+                Objects.equals(grades, student.grades);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(age, firstName, lastName, grades);
+    }
 
     private int age;
 

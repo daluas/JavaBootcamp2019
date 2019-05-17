@@ -13,9 +13,10 @@ public class StefanEx {
     public static long findNumberSumOfDivisorsSquared(int number) {
         if(number == 0)
             return 0;
-        if(number == 1)
+        if(number == 1 || number == -1)
             return 1;
         long sum = 1;
+        number = Math.abs(number);
         for(int i = 2; i < number; i++) {
             sum += getDivisorSquaredIfNumberDivedPerfectly(number, i);
         }
@@ -50,11 +51,15 @@ public class StefanEx {
         }
     }
 
-    public static void displayStudentsOlderThan20(List<Student>students) {
+    public static List<Student> displayStudentsOlderThan20(List<Student> students) {
+        List<Student> result = new ArrayList<>();
         System.out.println("Students with age greater than 20:");
         for (Student student : students) {
             showIfCondtionFulfilled(student, student.getAge() > 20);
+            if(student.getAge() > 20)
+                result.add(student);
         }
+        return result;
     }
 
     public static void showIfCondtionFulfilled(Student student, boolean condition) {
@@ -104,6 +109,22 @@ public class StefanEx {
 
     }
 
+    public static List<Student> createDefaultStudentList() {
+        List<Student> inputList = new ArrayList<>();
+
+        Student student1 = new Student(22, "Ionel", "Popescu");
+        Student student2 = new Student(18, "Mihai", "Ionescu");
+        Student student3 = new Student(21, "Ghita", "Muresan");
+        Student student4 = new Student(17, "Dorel", "Constructor");
+
+        inputList.add(student1);
+        inputList.add(student2);
+        inputList.add(student3);
+        inputList.add(student4);
+
+        return inputList;
+    }
+
     public static void main(String[] args) {
 
 
@@ -115,21 +136,10 @@ public class StefanEx {
         /// The divisors squared are [1, 4, 9, 36, 49, 196, 441, 1764]
         /// The sum of the squared divisors is 2500 which is the perfect square of 50
         /// This means 42 respects the rule
-        numberWithSquareSumOfSquareDivisorsFinder(-3, 0);
-        System.out.println(numberWithSquareSumOfSquareDivisorsFinder(10, 1000));
+        System.out.println(numberWithSquareSumOfSquareDivisorsFinder(-3, 0));
         System.out.println(numberWithSquareSumOfSquareDivisorsFinder(1000, 1500));
 
-        List<Student> students = new ArrayList<>();
-
-        Student student1 = new Student(22, "Ionel", "Popescu");
-        Student student2 = new Student(18, "Mihai", "Ionescu");
-        Student student3 = new Student(21, "Ghita", "Muresan");
-        Student student4 = new Student(17, "Dorel", "Constructor");
-
-        students.add(student1);
-        students.add(student2);
-        students.add(student3);
-        students.add(student4);
+        List<Student> students = createDefaultStudentList();
 
         // Sort the students by age
         students.sort(new StudentComparator());

@@ -27,6 +27,15 @@ public class StefanExSpec {
     }
 
     @Test
+    public void should_return_null_pointer_exception_if_list_of_students_is_null() {
+        Assertions.assertThrows(NullPointerException.class, () -> StefanEx.addIfPerfectedSquared(null, 0, 0));
+    }
+
+    @Test void should_return_null_pointer_exception_if_list_of_grades_is_null() {
+        Assertions.assertThrows(NullPointerException.class, () -> StefanEx.checkIfGradesGreaterThanFive(null));
+    }
+
+    @Test
     public void should_return_true_if_number_is_perfect_square() {
         long inputNumber = 4;
 
@@ -46,7 +55,7 @@ public class StefanExSpec {
     public void should_return_integer_list_with_sum_of_squared_divisors() {
         int inputBegin = -3;
         int inputEnd = 0;
-        List<Integer> expected = Collections.singletonList(0);
+        List<Integer> expected = Arrays.asList(-1, 0);
 
         List<Integer> result = StefanEx.numberWithSquareSumOfSquareDivisorsFinder(inputBegin, inputEnd);
         Assertions.assertArrayEquals(expected.toArray(), result.toArray());
@@ -93,6 +102,33 @@ public class StefanExSpec {
         boolean result = StefanEx.checkIfGradesGreaterThanFive(inputList);
 
         Assertions.assertTrue(result);
+    }
+
+    @Test
+    public void should_return_all_students_whos_age_is_over_20() {
+        List<Student> inputList = createDefaultStudentList();
+        List<Student> expected = new ArrayList<>();
+
+        Student student1 = new Student(22, "Ionel", "Popescu");
+        Student student3 = new Student(21, "Ghita", "Muresan");
+
+        expected.add(student1);
+        expected.add(student3);
+
+        inputList = StefanEx.displayStudentsOlderThan20(inputList);
+
+        Assertions.assertEquals(expected, inputList);
+    }
+
+
+    @Test
+    public void should_return_false_if_not_all_grades_are_greater_than_5() {
+        List<Grades> inputList =  createDefaultGradesList();
+        inputList.add(new Grades(4, "Limba Romana"));
+
+        boolean result = StefanEx.checkIfGradesGreaterThanFive(inputList);
+
+        Assertions.assertFalse(result);
     }
 
     public List<Student> createDefaultStudentList() {
