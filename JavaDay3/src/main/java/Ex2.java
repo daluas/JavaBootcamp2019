@@ -6,19 +6,36 @@ public class Ex2 {
     the english alphabet. Implement a decoder for the Ceasar cipher where N = 5.
     */
 
-    private static char changeLetter(char ch, int n){
 
-        char result;
+    public static char changeLetter(char ch, int n){
+
         if(Character.isUpperCase(ch)){
-            result = (char)(((int)ch - n - 65)%26 + 65);
-        }else{
-            result = (char)(((int)ch - n - 97)%26 + 97);
+            ch = (char)(ch - n);
+            ch = getChIfLowerThan_a(ch);
+
+        }else if (Character.isLowerCase(ch)){
+            ch = (char)(ch - n);
+            ch = getChIfLowerThan_A(ch);
         }
 
-        return result;
+        return ch;
     }
 
-    private static String decrypt(String code, int n){
+    public static char getChIfLowerThan_A(char ch) {
+        if(ch < 'a'){
+            ch = (char)(ch + 'z' - 'a' + 1);
+        }
+        return ch;
+    }
+
+    public static char getChIfLowerThan_a(char ch) {
+        if(ch < 'A'){
+            ch = (char)(ch + 'Z' - 'A' + 1);
+        }
+        return ch;
+    }
+
+    public static String decrypt(String code, int n){
         int it;
         String result = "";
         char[] charCode;
@@ -33,6 +50,8 @@ public class Ex2 {
     }
 
     public static void main(String[] args) {
+
+        //System.out.println(changeLetter('%', 5));
         System.out.println("Ex2: " + decrypt("EXXEGOEXSRgI", 4));
     }
 }
