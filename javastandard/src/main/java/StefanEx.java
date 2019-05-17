@@ -8,9 +8,13 @@ class StudentComparator implements Comparator<Student> {
     }
 }
 
-public class StefanEx {
+public class  StefanEx {
 
-    private static long findNumberSumOfDivisorsSquared(int number) {
+    public static long findNumberSumOfDivisorsSquared(int number) {
+        if(number == 1 || number == -1)
+            return 1;
+        if(number == 0)
+            return 0;
         long sum = 1;
         for(int i = 2; i < number; i++) {
             if(number % i == 0) {
@@ -21,12 +25,12 @@ public class StefanEx {
         return sum;
     }
 
-    private static boolean isPerfectSquare(long number) {
+    public static boolean isPerfectSquare(long number) {
         double sqrt = Math.sqrt(number);
         return (sqrt - Math.floor(sqrt)) == 0;
     }
 
-    private static List<Integer> numberWithSquareSumOfSquareDivisorsFinder(int begin, int end) {
+    public static List<Integer> numberWithSquareSumOfSquareDivisorsFinder(int begin, int end) {
         List<Integer> result = new ArrayList<>();
         for(int number = begin; number <= end; number++) {
             long aux = findNumberSumOfDivisorsSquared(number);
@@ -37,22 +41,24 @@ public class StefanEx {
         return result;
     }
 
-    private static void displayStudentsOlderThan20(List<Student>students) {
-        System.out.println("Students with age greater than 20:");
+    public static List<Student> returnStudentsOlderThan20(List<Student>students) {
+        List<Student> over20Students = new ArrayList<>();
         for (Student student : students) {
             if(student.getAge() > 20) {
-                System.out.println(student);
+                over20Students.add(student);
             }
         }
+        return over20Students;
     }
 
-    private static void displayStudentsWithLastnameEndingOfEscu(List<Student>students) {
-        System.out.println("Students ending with escu:");
+    public static List<Student> getStudentsWithLastnameEndingOfEscu(List<Student>students) {
+        List<Student> escuStudents = new ArrayList<>();
         for (Student student : students) {
             if(student.getLastName().endsWith("escu")) {
-                System.out.println(student);
+                escuStudents.add(student);
             }
         }
+        return escuStudents;
     }
 
     private static void addDefaultStudentGrades(List<Student> students) {
@@ -66,7 +72,7 @@ public class StefanEx {
         }
     }
 
-    private static boolean checkIfGradesGreaterThanFive(List<Grades> grades) {
+    public static boolean checkIfGradesGreaterThanFive(List<Grades> grades) {
         for(Grades grade : grades) {
             if(grade.getScore() < 5) {
                 return false;
@@ -75,13 +81,14 @@ public class StefanEx {
         return true;
     }
 
-    private static void displayStudentsWithGradesAboveFive(List<Student>students) {
+    public static List<String> getStudentsLastNameWithGradesAboveFive(List<Student>students) {
+        List<String> aboveFiveStudentsNames = new ArrayList<>();
         for (Student student : students) {
             if(checkIfGradesGreaterThanFive(student.getGrades())) {
-                System.out.println(student.getLastName());
+                aboveFiveStudentsNames.add(student.getLastName());
             }
         }
-
+        return aboveFiveStudentsNames;
     }
 
     public static void main(String[] args) {
@@ -115,15 +122,15 @@ public class StefanEx {
         students.sort(new StudentComparator());
         System.out.println(students);
         //TODO Display only the students that are above 20 years
-        displayStudentsOlderThan20(students);
+        List<Student> over20Students = returnStudentsOlderThan20(students);
         //TODO Display only the students that have their lastname ending in escu
-        displayStudentsWithLastnameEndingOfEscu(students);
+        List<Student> escuStudents = getStudentsWithLastnameEndingOfEscu(students);
         //TODO Create a new Class named Grades with the following members: score and disciplineName. Each Student can have one or more grades at a certain discipline
         //TODO Add grades to the students
         addDefaultStudentGrades(students);
         System.out.println(students);
         //TODO Create a method that displays the the lastName of the students that have no grade lower than 5.
-        displayStudentsWithGradesAboveFive(students);
+        List<String> aboveFiveStudentNames = getStudentsLastNameWithGradesAboveFive(students);
 
         // Sort the students by age
         students = students.stream().sorted(Comparator.comparingInt(Student::getAge)).collect(Collectors.toList());
