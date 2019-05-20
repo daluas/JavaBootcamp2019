@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/exercise1Solution/pom.xml" />
+        <option value="$PROJECT_DIR$/exercise2Solution/pom.xml" />
+        <option value="$PROJECT_DIR$/Day3_exercise1/pom.xml" />
+        <option value="$PROJECT_DIR$/Day3_exercise2/pom.xml" />
+        <option value="$PROJECT_DIR$/Day3_exercise3/pom.xml" />
+        <option value="$PROJECT_DIR$/Day3_exercise4/pom.xml" />
+        <option value="$PROJECT_DIR$/Day5_exercises/pom.xml" />
+      </list>
+    </option>
+  </component>
+</project>

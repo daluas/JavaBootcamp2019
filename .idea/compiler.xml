@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Day3_exercise1" />
+        <module name="Day3_exercise2" />
+        <module name="Day3_exercise3" />
+        <module name="Day3_exercise4" />
+        <module name="Day5_exercises" />
+        <module name="Exercise1" />
+        <module name="exercise1Solution" />
+        <module name="exercise2Solution" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Day3_exercise1" target="8" />
+      <module name="Day3_exercise2" target="1.5" />
+      <module name="Day3_exercise3" target="8" />
+      <module name="Day3_exercise4" target="8" />
+      <module name="Day5_exercises" target="1.5" />
+      <module name="Exercise1" target="1.5" />
+      <module name="exercise1Solution" target="8" />
+      <module name="exercise2Solution" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

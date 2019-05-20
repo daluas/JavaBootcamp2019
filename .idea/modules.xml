@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Day3_exercise1/Day3_exercise1.iml" filepath="$PROJECT_DIR$/Day3_exercise1/Day3_exercise1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day3_exercise2/Day3_exercise2.iml" filepath="$PROJECT_DIR$/Day3_exercise2/Day3_exercise2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day3_exercise3/Day3_exercise3.iml" filepath="$PROJECT_DIR$/Day3_exercise3/Day3_exercise3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day3_exercise4/Day3_exercise4.iml" filepath="$PROJECT_DIR$/Day3_exercise4/Day3_exercise4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Day5_exercises/Day5_exercises.iml" filepath="$PROJECT_DIR$/Day5_exercises/Day5_exercises.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Exercise1/Exercise1.iml" filepath="$PROJECT_DIR$/Exercise1/Exercise1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/JavaBootcamp2019.iml" filepath="$PROJECT_DIR$/.idea/JavaBootcamp2019.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercise1Solution/exercise1Solution.iml" filepath="$PROJECT_DIR$/exercise1Solution/exercise1Solution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercise2Solution/exercise2Solution.iml" filepath="$PROJECT_DIR$/exercise2Solution/exercise2Solution.iml" />
+    </modules>
+  </component>
+</project>
