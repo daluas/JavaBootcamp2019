@@ -3,7 +3,7 @@ package com.cegeka.spring.company.service.impl;
 import com.cegeka.spring.GeneralUtils;
 import com.cegeka.spring.company.dto.Company;
 import com.cegeka.spring.company.service.CompanyService;
-import com.cegeka.spring.company.service.annotations.PrivateCompany;
+import com.cegeka.spring.company.annotations.PrivateCompany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

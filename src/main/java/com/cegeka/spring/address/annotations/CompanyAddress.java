@@ -1,4 +1,4 @@
-package com.cegeka.spring.address.service.annotations;
+package com.cegeka.spring.address.annotations;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -11,5 +11,5 @@ import java.lang.annotation.Target;
         ElementType.TYPE, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Qualifier
-public @interface PersonalAddress {
+public @interface CompanyAddress {
 }

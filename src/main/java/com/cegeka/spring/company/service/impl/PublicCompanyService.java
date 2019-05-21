@@ -1,7 +1,7 @@
 package com.cegeka.spring.company.service.impl;
 
 import com.cegeka.spring.GeneralUtils;
-import com.cegeka.spring.company.service.annotations.PublicCompany;
+import com.cegeka.spring.company.annotations.PublicCompany;
 import com.cegeka.spring.company.dto.Company;
 import com.cegeka.spring.company.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;

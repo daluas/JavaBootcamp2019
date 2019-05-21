@@ -1,14 +1,13 @@
 package com.cegeka.spring;
 
-import com.cegeka.spring.address.service.annotations.CompanyAddress;
-import com.cegeka.spring.address.service.annotations.PersonalAddress;
-import com.cegeka.spring.company.service.annotations.PrivateCompany;
-import com.cegeka.spring.company.service.annotations.PublicCompany;
+import com.cegeka.spring.address.annotations.CompanyAddress;
+import com.cegeka.spring.address.annotations.PersonalAddress;
+import com.cegeka.spring.company.annotations.PrivateCompany;
+import com.cegeka.spring.company.annotations.PublicCompany;
 import com.cegeka.spring.address.dto.Address;
 import com.cegeka.spring.address.service.AddressService;
 import com.cegeka.spring.company.dto.Company;
 import com.cegeka.spring.company.service.CompanyService;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
