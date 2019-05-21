@@ -1,5 +1,9 @@
 package com.cegeka.spring;
 
+import com.cegeka.spring.address.service.annotations.CompanyAddress;
+import com.cegeka.spring.address.service.annotations.PersonalAddress;
+import com.cegeka.spring.company.service.annotations.PrivateCompany;
+import com.cegeka.spring.company.service.annotations.PublicCompany;
 import com.cegeka.spring.address.dto.Address;
 import com.cegeka.spring.address.service.AddressService;
 import com.cegeka.spring.company.dto.Company;
@@ -18,10 +22,10 @@ public class Application {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(@Qualifier("publicCompany") CompanyService publicCompanyService,
-											   @Qualifier("privateCompany") CompanyService privateCompanyService,
-											   @Qualifier("companyAddress") AddressService companyAddressService,
-											   @Qualifier("companyAddress") AddressService personalAddressService) {
+	public CommandLineRunner commandLineRunner(@PublicCompany CompanyService publicCompanyService,
+											   @PrivateCompany CompanyService privateCompanyService,
+											   @CompanyAddress AddressService companyAddressService,
+											   @PersonalAddress AddressService personalAddressService) {
 		return args -> {
 			Address companyAddress = new Address("Romania", "Iasi", "here", 1);
 			Address personalAddress = new Address("Romania", "Iasi", "Bd. Socola", 1);
