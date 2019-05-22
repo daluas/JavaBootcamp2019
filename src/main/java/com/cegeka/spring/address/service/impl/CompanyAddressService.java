@@ -1,6 +1,6 @@
 package com.cegeka.spring.address.service.impl;
 
-import com.cegeka.spring.address.dto.Address;
+import com.cegeka.spring.address.dto.AddressDto;
 import com.cegeka.spring.address.service.AddressService;
 import com.cegeka.spring.GeneralUtils;
 import com.cegeka.spring.address.annotations.CompanyAddress;
@@ -19,7 +19,7 @@ public class CompanyAddressService implements AddressService {
     }
 
     @Override
-    public void create(Address address) {
-        generalUtils.print(address, (Address::toString));
+    public void create(AddressDto address) {
+        generalUtils.print(address, (AddressDto::toString));
     }
 }

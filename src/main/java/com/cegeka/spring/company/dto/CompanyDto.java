@@ -1,19 +1,19 @@
 package com.cegeka.spring.company.dto;
 
-import com.cegeka.spring.address.dto.Address;
+import com.cegeka.spring.address.dto.AddressDto;
 
-public class Company {
+public class CompanyDto {
     private String name;
-    private Address address;
+    private AddressDto address;
 
-    public Company(String name, Address address) {
+    public CompanyDto(String name, AddressDto address) {
         this.name = name;
         this.address = address;
     }
 
     @Override
     public String toString() {
-        return "Company{" +
+        return "CompanyDto{" +
                 "name='" + name + '\'' +
                 ", com.cegeka.spring.address=" + address +
                 '}';

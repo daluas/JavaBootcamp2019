@@ -1,6 +1,6 @@
 package com.cegeka.spring.address.dto;
 
-public class Address {
+public class AddressDto {
     private String country;
     private String city;
     private String street;
@@ -22,7 +22,7 @@ public class Address {
         this.number = number;
     }
 
-    public Address(String country, String city, String street, int number) {
+    public AddressDto(String country, String city, String street, int number) {
         this.country = country;
         this.city = city;
         this.street = street;
@@ -32,7 +32,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
+        return "AddressDto{" +
                 "country='" + country + '\'' +
                 ", city='" + city + '\'' +
                 ", street='" + street + '\'' +

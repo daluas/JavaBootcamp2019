@@ -1,7 +1,7 @@
 package com.cegeka.spring.company.service.impl;
 
 import com.cegeka.spring.GeneralUtils;
-import com.cegeka.spring.company.dto.Company;
+import com.cegeka.spring.company.dto.CompanyDto;
 import com.cegeka.spring.company.service.CompanyService;
 import com.cegeka.spring.company.annotations.PrivateCompany;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class PrivateCompanyService implements CompanyService  {
     }
 
     @Override
-    public void create(Company company) {
-        generalUtils.print(company, Company::toString);
+    public void create(CompanyDto company) {
+        generalUtils.print(company, CompanyDto::toString);
     }
 }
