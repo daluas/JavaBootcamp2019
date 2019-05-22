@@ -17,4 +17,12 @@ public class Address {
                 ", number=" + number +
                 '}';
     }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
 }

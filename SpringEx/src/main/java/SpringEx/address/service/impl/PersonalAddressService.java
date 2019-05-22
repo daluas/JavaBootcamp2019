@@ -11,4 +11,12 @@ public class PersonalAddressService implements AddressService {
     public void create(Address address) {
         System.out.println(address.toString());
     }
+
+    public Boolean validateAddress(Address address) throws AddressNotValidException {
+        if(address.getStreet().contains("Iasi") && address.getNumber()>0)
+            return true;
+        else{
+            throw new AddressNotValidException("Introduced address is not from Iasi or has a valid number");
+        }
+    }
 }

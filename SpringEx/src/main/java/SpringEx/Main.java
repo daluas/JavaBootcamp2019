@@ -32,15 +32,16 @@ public class Main {
                                                    @Qualifier(value = "publicCompanyService") PublicCompanyService publicCompany) {
             return args -> {
 
-                Address cegekaAddress = new Address("Str. Bahlui",5);
-                Address stefAddress = new Address("Str. Doamnei",12);
+                Address cegekaAddress = new Address("Str. Bahlui Iasi",5);
+                Address stefAddress = new Address("Str. Doamnei Iasi",12);
                 Company stefCompany = new Company(stefAddress);
                 Company cegekaCompany = new Company(cegekaAddress);
+                companyAddress.validateAddress(cegekaAddress);
                 companyAddress.create(cegekaAddress);
                 publicCompany.create(cegekaCompany);
                 personalAddress.create(stefAddress);
-                privateCompany.create(stefCompany);
-                // Here the creation of the Company and Address objects must happen and calling of the create() from the interfaces
+                personalAddress.validateAddress(stefAddress);
+                privateCompany.create(stefCompany); ;
             };
         }
 
