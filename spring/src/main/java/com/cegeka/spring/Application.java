@@ -10,8 +10,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
+@EnableAspectJAutoProxy
 @ComponentScan({"com.cegeka.spring"})
 public class Application {
 
@@ -39,6 +41,15 @@ public class Application {
 			personalAddressService.create(personalAddress);
 			companyAddress1.setNumber(99);
 			companyAddressService.create(companyAddress1);
+			privateCompanyService.create();
+
+			privateCompanyService.throwException();
+
+			try {
+				privateCompanyService.throwNewException();
+			}catch (RuntimeException ignored){
+
+			}
 
 
 		};
