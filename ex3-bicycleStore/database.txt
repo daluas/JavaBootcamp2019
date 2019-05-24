@@ -1,0 +1,4 @@
+1|cube|1.0
+2|cube|2.0
+3|cube|3.0
+4|rockrider|520
