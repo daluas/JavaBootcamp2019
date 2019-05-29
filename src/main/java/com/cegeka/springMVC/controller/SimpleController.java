@@ -11,12 +11,6 @@ public class SimpleController {
 
     private String textToShow = "This is my first spring app!";
 
-    @GetMapping(value = "/")
-    public String home(Model model){
-        model.addAttribute("textToShow", textToShow);
-        return "home";
-    }
-
     @GetMapping(value = "/simpleResponse")
     public @ResponseBody String getSimpleResponse() {
         return "<h1>Simple Response</h1>";

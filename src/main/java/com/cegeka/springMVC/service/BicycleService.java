@@ -19,4 +19,8 @@ public interface BicycleService {
 
     BicycleServiceImpl.UpdateStatus updateBicycle(long id, Bicycle bicycle);
 
+    BicycleServiceImpl.UpdateStatus partialUpdateBicycle(long id, Bicycle bicycle);
+
+    boolean deleteBicycle(long id);
+
 }

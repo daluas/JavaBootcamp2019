@@ -13,6 +13,26 @@ public class Bicycle {
     public Bicycle() {
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Bicycle bicycle = (Bicycle) o;
+
+        if (price != bicycle.price) return false;
+        if (name != null ? !name.equals(bicycle.name) : bicycle.name != null) return false;
+        return model != null ? model.equals(bicycle.model) : bicycle.model == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (model != null ? model.hashCode() : 0);
+        result = 31 * result + (int) (price ^ (price >>> 32));
+        return result;
+    }
+
     public Bicycle(long id, String name, String model, long price) {
         this.id = id;
         this.name = name;

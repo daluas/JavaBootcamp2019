@@ -55,18 +55,62 @@ public class BicycleServiceImpl implements BicycleService {
         bicycleList.add(bicycle);
     }
 
-    //TODO return enum
     @Override
     public UpdateStatus updateBicycle(long id, Bicycle bicycle) {
         for(Bicycle currentBicycle: bicycleList) {
             if(currentBicycle.getId() == id) {
-                currentBicycle.setName(bicycle.getName());
-                currentBicycle.setModel(bicycle.getModel());
-                currentBicycle.setPrice(bicycle.getPrice());
-                return UpdateStatus.UPDATED;
+                return getUpdateResponseStatus(currentBicycle, bicycle);
             }
         }
         return UpdateStatus.NOT_FOUND;
+    }
+
+    @Override
+    public UpdateStatus partialUpdateBicycle(long id, Bicycle bicycleUpdater) {
+        Optional<Bicycle> currentBicycle = getBicycleById(id);
+
+        return UpdateStatus.UPDATED;
+    }
+
+    @Override
+    public boolean deleteBicycle(long id) {
+        for(Bicycle bicycle: bicycleList) {
+            if(bicycle.getId() == id) {
+                bicycleList.remove(bicycle);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //TODO
+    private UpdateStatus getPartialUpdateResponseStatus(Bicycle bicycleToUpdate, Bicycle bicycleUpdater) {
+        if(bicycleUpdater.getId() != 0)
+            bicycleToUpdate.setId(bicycleUpdater.getId());
+        if(bicycleUpdater.getName() != null)
+            bicycleToUpdate.setName(bicycleUpdater.getName());
+        if(bicycleUpdater.getModel() != null)
+            bicycleToUpdate.setModel(bicycleUpdater.getModel());
+        if(bicycleUpdater.getPrice() != 0)
+            bicycleToUpdate.setPrice(bicycleUpdater.getPrice());
+        //return ;
+        return UpdateStatus.NOT_UPDATED;
+    }
+
+    //TODO
+    private boolean hasBicycleAllFiledsEqual(Bicycle bicycleToCheck, Bicycle bicycleUpdater) {
+        return true;
+    }
+
+    private UpdateStatus getUpdateResponseStatus(Bicycle bicycleToUpdate, Bicycle bicycle) {
+        if(bicycleToUpdate.equals(bicycle)) {
+            return UpdateStatus.NOT_UPDATED;
+        } else {
+            bicycleToUpdate.setName(bicycle.getName());
+            bicycleToUpdate.setModel(bicycle.getModel());
+            bicycleToUpdate.setPrice(bicycle.getPrice());
+            return UpdateStatus.UPDATED;
+        }
     }
 
     private long getLastId() {

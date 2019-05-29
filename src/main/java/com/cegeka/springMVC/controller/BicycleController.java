@@ -2,6 +2,7 @@ package com.cegeka.springMVC.controller;
 
 import com.cegeka.springMVC.model.Bicycle;
 import com.cegeka.springMVC.service.BicycleService;
+import com.cegeka.springMVC.service.impl.BicycleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,19 +51,45 @@ public class BicycleController {
     }
 
     @PutMapping(value = "bicycle/{id}")
-    public void updateBicycle(@PathVariable long id,
+    public ResponseEntity updateBicycle(@PathVariable long id,
                               @RequestBody Bicycle bicycle) {
-        //TODO
-//        boolean succes = bicycleService.updateBicycle(id, bicycle);
-//        if(succes) {
-//            return new ResponseEntity(HttpStatus.OK);
-//        }
-//        return new ResponseEntity(HttpStatus.NOT_FOUND);
+        BicycleServiceImpl.UpdateStatus responseStatus = bicycleService.updateBicycle(id, bicycle);
+        if(responseStatus == BicycleServiceImpl.UpdateStatus.UPDATED) {
+            return new ResponseEntity(HttpStatus.OK);
+        } else if(responseStatus == BicycleServiceImpl.UpdateStatus.NOT_UPDATED) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping(value = "bicycles")
     public ResponseEntity updateAllBicycles() {
-        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+
+    @PatchMapping(value = "bicycle/{id}")
+    public ResponseEntity partialUpdateBicycle(@PathVariable long id,
+                                               @RequestBody Bicycle bicycle) {
+        bicycleService.partialUpdateBicycle(id, bicycle);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @PatchMapping(value = "bicycles")
+    public ResponseEntity partialUpdateAllBicycles() {
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping(value = "bicycle/{id}")
+    public ResponseEntity deleteBicycle(@PathVariable long id) {
+        if(bicycleService.deleteBicycle(id)) {
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping(value = "bicycles")
+    public ResponseEntity deleteAllBicycles() {
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
     private ResponseEntity<List<Bicycle>> handleBicycleListResponse(List<Bicycle> bicycleList) {
