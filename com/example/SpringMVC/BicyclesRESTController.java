@@ -37,7 +37,7 @@ public class BicyclesRESTController {
 
     }
 
-    @GetMapping(value = "/bicyclesByIds{id}",produces = "application/json")
+    @GetMapping(value = "/ids{id}",produces = "application/json")
     public ResponseEntity<List<Bicycle>> getBicyclesByIds(@RequestParam("id") List<String> bicyclesStringIds){
 
         List<Bicycle> listOfSearchedBicycles = Optional.ofNullable(bicyclesStringIds)
@@ -50,7 +50,7 @@ public class BicyclesRESTController {
         return new ResponseEntity<>(listOfSearchedBicycles,HttpStatus.OK);
     }
 
-    @GetMapping(value = "/bicyclesUnderPrice{price}",produces = "application/json")
+    @GetMapping(value = "/price{price}",produces = "application/json")
     public ResponseEntity<List<Bicycle>> getBicyclesWithLowerPrice(@RequestParam("price") Integer bicyclePrice){
 
         List<Bicycle> listOfSearchedBicycles = Optional.ofNullable(bicyclePrice)
@@ -64,13 +64,13 @@ public class BicyclesRESTController {
 
     }
 
-    @GetMapping(value = "/bicyclesByType",produces = "application/json")
+    @GetMapping(value = "/type",produces = "application/json")
     public ResponseEntity<Map<BicycleType,List<Bicycle>>> getBicyclesGroupByBicycleType(){
 
         return new ResponseEntity<>(bicycleService.getBicycleGroupByBicycleType(),HttpStatus.OK);
     }
 
-    @GetMapping(value = "/bicyclesByWheelsType",produces = "application/json")
+    @GetMapping(value = "/wheels",produces = "application/json")
     public ResponseEntity<Map<BicycleWheelsType,List<Bicycle>>> getBicyclesGroupByBicycleWheelsType(){
 
         return new ResponseEntity<>(bicycleService.getBicycleGroupByBicycleWheelsType(),HttpStatus.OK);
@@ -96,7 +96,7 @@ public class BicyclesRESTController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/bicycleDeleteById{id}",produces = "application/json")
+    @DeleteMapping(value = "/bicycle{id}",produces = "application/json")
     public ResponseEntity<String> deleteBicycle(@RequestParam("id") Integer bicycleId){
 
         boolean bicycleWasDeleted = Optional.ofNullable(bicycleId)
@@ -139,11 +139,6 @@ public class BicyclesRESTController {
        return new ResponseEntity<>("Bicycle components Updated",HttpStatus.OK);
 
     }
-
-
-
-
-
 
 
 
