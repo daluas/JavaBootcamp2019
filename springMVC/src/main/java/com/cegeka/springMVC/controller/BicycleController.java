@@ -1,6 +1,7 @@
 package com.cegeka.springMVC.controller;
 
 import com.cegeka.springMVC.model.Bicycle;
+import com.cegeka.springMVC.model.Headlight;
 import com.cegeka.springMVC.service.BicycleService;
 import com.cegeka.springMVC.service.impl.BicycleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,21 @@ import java.util.Optional;
 public class BicycleController {
 
     private BicycleService bicycleService;
+    private ComponentFeignClient componentFeignClient;
 
     @Autowired
-    public BicycleController(BicycleService bicycleService) {
+    public BicycleController(BicycleService bicycleService, ComponentFeignClient componentFeignClient) {
         this.bicycleService = bicycleService;
+        this.componentFeignClient = componentFeignClient;
+    }
+
+    @GetMapping(value = "/bicycle/headlight")
+    public ResponseEntity<Headlight> getCustomBicycle(@RequestParam(value="culoare") String culoare,
+                                                      @RequestParam(value="luminozitate") String luminozitate,
+                                                      @RequestParam(value="alimentare") String alimentare) {
+        ResponseEntity<Headlight> response = componentFeignClient.getHeadlight(culoare, luminozitate, alimentare);
+        Headlight headlight = response.getBody();
+        return new ResponseEntity<>(headlight, HttpStatus.OK);
     }
 
     @GetMapping(value = "/bicycles")
