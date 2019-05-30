@@ -68,8 +68,10 @@ public class BicycleServiceImpl implements BicycleService {
     @Override
     public UpdateStatus partialUpdateBicycle(long id, Bicycle bicycleUpdater) {
         Optional<Bicycle> currentBicycle = getBicycleById(id);
-
-        return UpdateStatus.UPDATED;
+        if(currentBicycle.isPresent()) {
+            return getPartialUpdateResponseStatus(currentBicycle.get(), bicycleUpdater);
+        }
+        return UpdateStatus.NOT_FOUND;
     }
 
     @Override
@@ -83,23 +85,41 @@ public class BicycleServiceImpl implements BicycleService {
         return false;
     }
 
-    //TODO
     private UpdateStatus getPartialUpdateResponseStatus(Bicycle bicycleToUpdate, Bicycle bicycleUpdater) {
-        if(bicycleUpdater.getId() != 0)
-            bicycleToUpdate.setId(bicycleUpdater.getId());
-        if(bicycleUpdater.getName() != null)
-            bicycleToUpdate.setName(bicycleUpdater.getName());
-        if(bicycleUpdater.getModel() != null)
-            bicycleToUpdate.setModel(bicycleUpdater.getModel());
-        if(bicycleUpdater.getPrice() != 0)
-            bicycleToUpdate.setPrice(bicycleUpdater.getPrice());
-        //return ;
+        boolean isBicycleNameChanged = setNewBicycleName(bicycleToUpdate, bicycleUpdater);
+        boolean isBicycleModelChanged = setNewBicycleModel(bicycleToUpdate, bicycleUpdater);
+        boolean isBicyclePriceChanged = setNewBicyclePrice(bicycleToUpdate, bicycleUpdater);
+
+        if(isBicycleNameChanged || isBicycleModelChanged || isBicyclePriceChanged)
+            return UpdateStatus.UPDATED;
         return UpdateStatus.NOT_UPDATED;
     }
 
-    //TODO
-    private boolean hasBicycleAllFiledsEqual(Bicycle bicycleToCheck, Bicycle bicycleUpdater) {
-        return true;
+    private boolean setNewBicycleName(Bicycle bicycleToUpdate, Bicycle bicycleUpdater) {
+        if(bicycleUpdater.getName() != null && !bicycleUpdater.getName().equals(bicycleToUpdate.getName())) {
+            bicycleToUpdate.setName(bicycleUpdater.getName());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean setNewBicycleModel(Bicycle bicycleToUpdate, Bicycle bicycleUpdater) {
+        if(bicycleUpdater.getModel() != null && !bicycleUpdater.getModel().equals(bicycleToUpdate.getModel())) {
+            bicycleToUpdate.setModel(bicycleUpdater.getModel());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean setNewBicyclePrice(Bicycle bicycleToUpdate, Bicycle bicycleUpdater) {
+        if(bicycleUpdater.getPrice() != 0 && bicycleUpdater.getPrice() != bicycleToUpdate.getPrice()) {
+            bicycleToUpdate.setPrice(bicycleUpdater.getPrice());
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private UpdateStatus getUpdateResponseStatus(Bicycle bicycleToUpdate, Bicycle bicycle) {

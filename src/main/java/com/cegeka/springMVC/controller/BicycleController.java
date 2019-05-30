@@ -70,8 +70,12 @@ public class BicycleController {
     @PatchMapping(value = "bicycle/{id}")
     public ResponseEntity partialUpdateBicycle(@PathVariable long id,
                                                @RequestBody Bicycle bicycle) {
-        bicycleService.partialUpdateBicycle(id, bicycle);
-        return new ResponseEntity(HttpStatus.OK);
+        BicycleServiceImpl.UpdateStatus response = bicycleService.partialUpdateBicycle(id, bicycle);
+        if(response == BicycleServiceImpl.UpdateStatus.UPDATED)
+            return new ResponseEntity(HttpStatus.OK);
+        else if(response == BicycleServiceImpl.UpdateStatus.NOT_UPDATED)
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
     @PatchMapping(value = "bicycles")

@@ -12,7 +12,4 @@ public class SpringMvcApplication {
 		SpringApplication.run(SpringMvcApplication.class, args);
 	}
 
-//	@Bean
-//	public CommandLineRunner commandLineRunner()
-
 }
