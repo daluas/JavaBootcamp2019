@@ -1,9 +1,10 @@
 package com.cegeka.springMVC.controller;
 
+import com.cegeka.springMVC.entity.BicycleToBuyEntity;
+import com.cegeka.springMVC.entity.BicycleToRentEntity;
 import com.cegeka.springMVC.model.Bicycle;
 import com.cegeka.springMVC.model.Headlight;
 import com.cegeka.springMVC.service.BicycleService;
-import com.cegeka.springMVC.service.impl.BicycleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,71 +36,68 @@ public class BicycleController {
         return new ResponseEntity<>(headlight, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/bicycles")
-    public ResponseEntity<List<Bicycle>> getAllBicycles() {
-        List<Bicycle> bicycleList = bicycleService.getAllBicycles();
-        return handleBicycleListResponse(bicycleList);
+    @GetMapping(value = "/bicyclestorent")
+    public ResponseEntity<List<BicycleToRentEntity>> getAllBicyclesToRent() {
+        //TODO
+        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(value = "/bicycle/{id}")
-    public ResponseEntity<Optional<Bicycle>> getBicycleById(@PathVariable long id) {
-        Optional<Bicycle> bicycle = bicycleService.getBicycleById(id);
-        if (bicycle.isPresent()) {
-            return new ResponseEntity<>(bicycle, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(bicycle, HttpStatus.NOT_FOUND);
+    @GetMapping(value = "/bicycletorent/{id}")
+    public ResponseEntity<Optional<BicycleToRentEntity>> getBicycleToRentById(@PathVariable long id) {
+        //TODO
+        return new ResponseEntity(new BicycleToRentEntity(), HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(value = "/bicycles/{name}")
-    public ResponseEntity<List<Bicycle>> getBicyclesByName(@PathVariable String name) {
-        List<Bicycle> bicycleList = bicycleService.getBicycleByName(name);
-        return handleBicycleListResponse(bicycleList);
+    @GetMapping(value = "/bicycletorent/{name}")
+    public ResponseEntity<List<BicycleToRentEntity>> getBicycleToRentByName(@PathVariable String name) {
+        //TODO
+        return new ResponseEntity(new BicycleToRentEntity(), HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping(value = "/bicycle")
-    public ResponseEntity postBicycle(@RequestBody Bicycle bicycle) {
-        bicycleService.addBicycle(bicycle);
-        return new ResponseEntity(HttpStatus.CREATED);
+    @GetMapping(value = "/bicycletorent/{model}")
+    public ResponseEntity<List<BicycleToRentEntity>> getBicycleToRentByModel(@PathVariable String model) {
+        //TODO
+        return new ResponseEntity(new BicycleToRentEntity(), HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping(value = "bicycle/{id}")
-    public ResponseEntity updateBicycle(@PathVariable long id,
-                              @RequestBody Bicycle bicycle) {
-        BicycleServiceImpl.UpdateStatus responseStatus = bicycleService.updateBicycle(id, bicycle);
-        if(responseStatus == BicycleServiceImpl.UpdateStatus.UPDATED) {
-            return new ResponseEntity(HttpStatus.OK);
-        } else if(responseStatus == BicycleServiceImpl.UpdateStatus.NOT_UPDATED) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
-        }
+    @GetMapping(value = "/bicycletobuy/{id}")
+    public ResponseEntity<Optional<BicycleToBuyEntity>> getBicycleToBuyById(@PathVariable long id) {
+        //TODO
+        return new ResponseEntity(new BicycleToBuyEntity(), HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping(value = "/bicycletobuy/{name}")
+    public ResponseEntity<List<BicycleToBuyEntity>> getBicycleToBuyByName(@PathVariable String name) {
+        //TODO
+        return new ResponseEntity(new BicycleToBuyEntity(), HttpStatus.NOT_FOUND);
+    }
+    @GetMapping(value = "/bicycletobuy/{model}")
+    public ResponseEntity<List<BicycleToBuyEntity>> getBicycleToBuyByModel(@PathVariable String name) {
+        //TODO
+        return new ResponseEntity(new BicycleToBuyEntity(), HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping(value = "/bicycletorent")
+    public ResponseEntity postBicycleToRent(@RequestBody BicycleToRentEntity bicycleToRent) {
+        //TODO
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping(value = "bicycles")
-    public ResponseEntity updateAllBicycles() {
+    @PostMapping(value = "/bicycletobuy")
+    public ResponseEntity postBicycleToBuy(@RequestBody BicycleToBuyEntity bicycleToBuy) {
+        //TODO
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
-    @PatchMapping(value = "bicycle/{id}")
-    public ResponseEntity partialUpdateBicycle(@PathVariable long id,
-                                               @RequestBody Bicycle bicycle) {
-        BicycleServiceImpl.UpdateStatus response = bicycleService.partialUpdateBicycle(id, bicycle);
-        if(response == BicycleServiceImpl.UpdateStatus.UPDATED)
-            return new ResponseEntity(HttpStatus.OK);
-        else if(response == BicycleServiceImpl.UpdateStatus.NOT_UPDATED)
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
+    @DeleteMapping(value = "bicycletorent/{id}")
+    public ResponseEntity deleteBicycleToRent(@PathVariable long id) {
+        //TODO
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
-    @PatchMapping(value = "bicycles")
-    public ResponseEntity partialUpdateAllBicycles() {
-        return new ResponseEntity(HttpStatus.NOT_FOUND);
-    }
-
-    @DeleteMapping(value = "bicycle/{id}")
-    public ResponseEntity deleteBicycle(@PathVariable long id) {
-        if(bicycleService.deleteBicycle(id)) {
-            return new ResponseEntity(HttpStatus.OK);
-        }
+    @DeleteMapping(value = "bicycletobuy/{id}")
+    public ResponseEntity deleteBicycleToBuy(@PathVariable long id) {
+        //TODO
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
