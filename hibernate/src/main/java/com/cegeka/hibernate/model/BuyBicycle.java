@@ -12,28 +12,66 @@ package com.cegeka.hibernate.model;
 
  */
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class BuyBicycle {
+
+@Entity
+@Table(name= "BUYBICYCLES")
+public class BuyBicycle implements Serializable {
+    @Id
+    @GeneratedValue
+    @Column(name="BB_ID", unique = true, nullable = false)
     private Integer id;
+
+    @Column(name="BB_NAME", nullable = false, length = 40)
     private String name;
+
+    @Column(name="BB_TYPE", length = 40)
+    private String type;
+
+    @Column(name="BB_SIZE", length = 1)
     private String size;
+
+    @Column(name="BB_PRICE", nullable = false, precision=6, scale=2)
     private Float price;
+
+    @Column(name="BB_COLOUR", length=20)
     private String colour;
+
+    @Column(name="BB_BRAND", nullable = false, length=30)
     private String brand;
+
+    @Column(name="BB_QUANTITY", nullable = false, precision=3)
     private Integer quality;
 
     public BuyBicycle() {
     }
 
-    public BuyBicycle(Integer id, String name, String size, Float price, String colour, String brand, Integer quality) {
+    public BuyBicycle(Integer id, String name, String type, String size, Float price, String colour, String brand, Integer quality) {
         this.id = id;
         this.name = name;
+        this.type = type;
         this.size = size;
         this.price = price;
         this.colour = colour;
         this.brand = brand;
         this.quality = quality;
+    }
+
+    @Override
+    public String toString() {
+        return "BuyBicycle{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", size='" + size + '\'' +
+                ", price=" + price +
+                ", colour='" + colour + '\'' +
+                ", brand='" + brand + '\'' +
+                ", quality=" + quality +
+                '}';
     }
 
     @Override
@@ -43,6 +81,7 @@ public class BuyBicycle {
         BuyBicycle that = (BuyBicycle) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
+                Objects.equals(type, that.type) &&
                 Objects.equals(size, that.size) &&
                 Objects.equals(price, that.price) &&
                 Objects.equals(colour, that.colour) &&
@@ -53,7 +92,15 @@ public class BuyBicycle {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, name, size, price, colour, brand, quality);
+        return Objects.hash(id, name, type, size, price, colour, brand, quality);
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Integer getId() {
