@@ -1,34 +1,36 @@
 package com.cegeka.springMVC.controller;
 
 import com.cegeka.springMVC.entity.CustomerEntity;
-import com.cegeka.springMVC.service.CompanyService;
+import com.cegeka.springMVC.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CustomerController {
 
-    private CompanyService companyService;
+    CustomerService customerService;
 
     @Autowired
-    public CustomerController(CompanyService companyService) {
-        this.companyService = companyService;
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
     }
 
-    @PostMapping(value = "/customer")
-    public ResponseEntity postCustomer(CustomerEntity customerEntity)  {
-        //TODO
-        return new ResponseEntity(HttpStatus.OK);
+    @PostMapping(value = "/customers")
+    public ResponseEntity<CustomerEntity> postCustomer(@RequestBody CustomerEntity customerEntity)  {
+        customerService.addCustomer(customerEntity);
+        return new ResponseEntity<>(customerEntity, HttpStatus.CREATED);
     }
 
-    @DeleteMapping(value = "/customer/{id}")
-    public ResponseEntity deleteCustomer(@PathVariable long id) {
+    @DeleteMapping(value = "/customers/{id}")
+    public ResponseEntity deleteCustomer(@PathVariable Long id) {
         //TODO
+        Integer deletedEntities = customerService.deleteCustomer(id);
+        if(deletedEntities == 0) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity(HttpStatus.OK);
     }
 

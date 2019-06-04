@@ -1,13 +1,18 @@
 package com.cegeka.springMVC.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "bikes_to_buy")
-public class BicycleToBuyEntity {
-    @Id @GeneratedValue
+public class BicycleToBuyEntity implements Serializable {
+
+    private static final long serialVersionUID = -3296315484797323613L;
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private long id;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -24,11 +29,11 @@ public class BicycleToBuyEntity {
     public BicycleToBuyEntity() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

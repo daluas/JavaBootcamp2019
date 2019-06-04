@@ -1,29 +1,14 @@
-package com.cegeka.springMVC.entity;
+package com.cegeka.springMVC.model;
 
-import javax.persistence.*;
+public class Customer {
 
-
-@Entity
-@Table(name = "customers")
-public class CustomerEntity {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
-
-    @Column(name = "first_name", nullable = false)
     private String firstName;
-
-    @Column(name = "last_name", nullable = false)
     private String lastName;
-
-    @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
-
-    @Column(name = "email", nullable = false)
     private String email;
 
-    public CustomerEntity() {
+    public Customer() {
     }
 
     public int getId() {
