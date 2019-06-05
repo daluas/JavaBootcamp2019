@@ -51,8 +51,8 @@ public class BicycleToBuyController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(value = "/bicyclestobuy/name/{name}")
-    public ResponseEntity<List<BicycleToBuy>> getBicycleToBuyByName(@PathVariable String name) {
+    @GetMapping(value = "/bicyclestobuy", params = {"name"})
+    public ResponseEntity<List<BicycleToBuy>> getBicycleToBuyByName(@RequestParam("name") String name) {
         List<BicycleToBuy> bicycleToBuyList = bicycleService.getBicyclesByName(name);
         return handleBicycleToBuyListResponse(bicycleToBuyList);
     }

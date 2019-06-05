@@ -7,7 +7,7 @@ public class BicycleToRent {
     private long id;
     private String name;
     private String model;
-    private long pricePerHour;
+    private float pricePerHour;
 
     public BicycleToRent() {
     }
@@ -36,11 +36,11 @@ public class BicycleToRent {
         return model;
     }
 
-    public long getPricePerHour() {
+    public float getPricePerHour() {
         return pricePerHour;
     }
 
-    public void setPricePerHour(long pricePerHour) {
+    public void setPricePerHour(float pricePerHour) {
         this.pricePerHour = pricePerHour;
     }
 }

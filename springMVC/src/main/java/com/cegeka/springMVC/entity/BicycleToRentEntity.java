@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "bikes_to_rent")
 public class BicycleToRentEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -16,20 +16,20 @@ public class BicycleToRentEntity {
     @Column(name = "model", nullable = false)
     private String model;
 
-    @Column(name = "price", nullable = false)
-    private float pricePerHour;
+    @Column(name = "price_per_hour", nullable = false)
+    private Float pricePerHour;
 
     @Column(name = "amount", nullable = false)
-    private int amount;
+    private Integer amount;
 
     public BicycleToRentEntity() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -49,19 +49,19 @@ public class BicycleToRentEntity {
         this.model = model;
     }
 
-    public float getPricePerHour() {
+    public Float getPricePerHour() {
         return pricePerHour;
     }
 
-    public void setPricePerHour(float pricePerHour) {
+    public void setPricePerHour(Float pricePerHour) {
         this.pricePerHour = pricePerHour;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 }

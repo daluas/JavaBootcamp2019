@@ -21,7 +21,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public Integer deleteCustomer(Long id) {
+    public Integer deleteCustomer(Integer id) {
         String query = "DELETE CustomerEntity c WHERE c.id = :id";
         return entityManager.createQuery(query)
                 .setParameter("id", id)

@@ -22,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Integer deleteCustomer(Long id) {
+    public Integer deleteCustomer(Integer id) {
         return customerRepository.deleteCustomer(id);
     }
 

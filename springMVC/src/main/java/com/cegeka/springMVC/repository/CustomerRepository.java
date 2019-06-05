@@ -6,6 +6,6 @@ public interface CustomerRepository {
 
     void insertCustomer(CustomerEntity customerEntity);
 
-    Integer deleteCustomer(Long id);
+    Integer deleteCustomer(Integer id);
 
 }

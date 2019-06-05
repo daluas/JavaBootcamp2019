@@ -2,7 +2,7 @@ package com.cegeka.springMVC.model;
 
 public class Customer {
 
-    private int id;
+    private long id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -11,11 +11,11 @@ public class Customer {
     public Customer() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

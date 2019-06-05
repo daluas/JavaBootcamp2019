@@ -6,6 +6,6 @@ public interface CustomerService {
 
     void addCustomer(CustomerEntity customerEntity);
 
-    Integer deleteCustomer(Long id);
+    Integer deleteCustomer(Integer id);
 
 }

@@ -25,7 +25,7 @@ public class CustomerController {
     }
 
     @DeleteMapping(value = "/customers/{id}")
-    public ResponseEntity deleteCustomer(@PathVariable Long id) {
+    public ResponseEntity deleteCustomer(@PathVariable Integer id) {
         //TODO
         Integer deletedEntities = customerService.deleteCustomer(id);
         if(deletedEntities == 0) {
